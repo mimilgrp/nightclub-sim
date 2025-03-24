@@ -5,6 +5,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public GameObject pressEUI;
 
+    public Transform carryPoint;
+
     public float detectionRadius = 5f;
     public LayerMask itemLayer;
 
@@ -56,7 +58,7 @@ public class PlayerInteraction : MonoBehaviour
         // if the player presses E call Interaction() from the script interactable object of this object
         if (Input.GetKeyDown(KeyCode.E))
         {
-            closestItem.Interaction();
+            closestItem.Interaction(carryPoint);
         }
     }
 
