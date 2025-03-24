@@ -37,7 +37,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        // if the closest item changed then we update our reference
+        // if the closest item changed then we update our closest interactable item
         if (newClosest != closestItem)
         {
             closestItem = newClosest;
@@ -60,7 +60,7 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    // Visualize the detection sphere in the Scene view
+    // To visualize
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
