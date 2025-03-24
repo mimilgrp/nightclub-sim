@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/__Test__/Customer/CustomerAiTest.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
