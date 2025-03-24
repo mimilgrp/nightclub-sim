@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 5822103560169150409}
   - component: {fileID: 6003354524488177128}
   - component: {fileID: 2489294489526330736}
+  - component: {fileID: 8650185923314503146}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -228,6 +229,23 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &8650185923314503146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827343378305278291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beec334b0ac3ef749aa739564d7c1577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressEUI: {fileID: 6903748531932419538}
+  detectionRadius: 5
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &3362812044094698786
 GameObject:
   m_ObjectHideFlags: 0
