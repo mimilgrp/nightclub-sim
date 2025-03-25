@@ -90,7 +90,6 @@ public class PlayerInteraction : MonoBehaviour
             else if (isCarrying && closestInteractable is ShelfStockage)
             {
                 // Store item on shelf
-                Debug.Log("HERE");
                 ShelfStockage shelf = (ShelfStockage)closestInteractable;
                 shelf.Interact(this.gameObject);
             }
