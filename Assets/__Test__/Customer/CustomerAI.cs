@@ -3,11 +3,9 @@ using System.Collections;
 
 public class CustomerAI : MonoBehaviour
 {
-    [Header("Customer Attributes")]
     public float stamina = 100f;
     public float money = 100f;
 
-    [Header("Action Chances")]
     [Range(0, 100)]
     public float danceChance = 25f;
     [Range(0, 100)]
@@ -22,7 +20,8 @@ public class CustomerAI : MonoBehaviour
 
     private Transform dancefloorPosition;
     private Transform barPosition;
-    private Transform bathroomPosition;
+    private Transform MenbathroomPosition;
+    private Transform WomenbathroomPosition;
     private Transform wanderingPosition;
 
     private const float STAMINA_DECREASE_BAR = 5f;
@@ -35,22 +34,11 @@ public class CustomerAI : MonoBehaviour
     {
         movement = GetComponent<CustomerMovementTest>();
 
-        dancefloorPosition = GetTaggedPosition("Dancefloor");
-        barPosition = GetTaggedPosition("Bar");
-        bathroomPosition = GetTaggedPosition("Bathroom");
-        wanderingPosition = GetTaggedPosition("Wandering");
-    }
-
-    private Transform GetTaggedPosition(string tag)
-    {
-        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(tag);
-
-        if (objectsWithTag.Length == 0)
-            return null;
-
-        int randomIndex = Random.Range(0, objectsWithTag.Length);
-
-        return objectsWithTag[randomIndex].transform;
+        dancefloorPosition = GameObject.FindGameObjectWithTag("Dancefloor").transform;
+        barPosition = GameObject.FindGameObjectWithTag("Bar").transform;
+        MenbathroomPosition = GameObject.FindGameObjectWithTag("MenBathroom").transform;
+        WomenbathroomPosition = GameObject.FindGameObjectWithTag("MenBathroom").transform;
+        wanderingPosition = GameObject.FindGameObjectWithTag("Wandering").transform;
     }
 
     void Update()
@@ -74,8 +62,8 @@ public class CustomerAI : MonoBehaviour
         float totalChance = danceChance + barChance + toiletChance + wanderingChance;
         float randomValue = Random.Range(0f, totalChance);
         float accumulatedChance = 0f;
-
-        if (randomValue <= (accumulatedChance += danceChance))
+        accumulatedChance = danceChance;
+        if (randomValue <= accumulatedChance)
             return "Dancefloor";
         if (randomValue <= (accumulatedChance += barChance))
             return "Bar";
@@ -97,7 +85,7 @@ public class CustomerAI : MonoBehaviour
         switch (action)
         {
             case "Bathroom":
-                yield return MoveToAndHandleStamina(action, bathroomPosition, STAMINA_DECREASE_BATHROOM, Random.Range(5f, 10f));
+                yield return MoveToAndHandleStamina(action, MenbathroomPosition, STAMINA_DECREASE_BATHROOM, Random.Range(5f, 10f));
                 break;
 
             case "Bar":
@@ -109,7 +97,7 @@ public class CustomerAI : MonoBehaviour
                 break;
 
             case "Wandering":
-                yield return MoveToAndHandleStamina(action, wanderingPosition, -STAMINA_INCREASE_WANDERING, 5f);
+                yield return MoveToAndHandleStamina(action, wanderingPosition, STAMINA_INCREASE_WANDERING, 5f);
                 break;
         }
     }
@@ -119,8 +107,7 @@ public class CustomerAI : MonoBehaviour
         if (targetPosition == null)
             yield break;
 
-        Debug.Log($"Customer goes to {position}");
-
+        Debug.Log($"Customer goes to " + position);
         yield return StartCoroutine(movement.MoveTo(targetPosition.position));
         stamina += staminaChange;
         money -= moneyChange;
