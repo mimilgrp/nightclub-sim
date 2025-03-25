@@ -5,9 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Bar
-  - Bathroom
   - Wandering
   - Dancefloor
+  - MenBathroom
+  - WomenBathroom
+  - Beverage
   layers:
   - Default
   - TransparentFX

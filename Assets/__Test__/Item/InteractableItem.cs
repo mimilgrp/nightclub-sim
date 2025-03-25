@@ -3,16 +3,11 @@ using UnityEngine;
 public class InteractableItem : MonoBehaviour
 {
     private bool isCarried = false;
-
     public Transform carryPoint;
-
-    public virtual void Interaction(Transform player)
+    public virtual void Interaction()
     {
+
         Debug.Log("Interacted with item: " + gameObject.name);
-        if (carryPoint == null)
-        {
-            Debug.LogWarning("No carryPoint assigned");
-        }
 
         if (!isCarried)
         {
@@ -21,6 +16,8 @@ public class InteractableItem : MonoBehaviour
 
             // Make this item a child of the carryPoint
             transform.SetParent(carryPoint);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
 
             isCarried = true;
         }
@@ -31,15 +28,6 @@ public class InteractableItem : MonoBehaviour
 
             // Detach from the carryPoint
             transform.SetParent(null);
-
-            // Re-enable physics
-            Rigidbody rb = GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.useGravity = true;
-                rb.isKinematic = false;
-            }
-
             isCarried = false;
         }
     }

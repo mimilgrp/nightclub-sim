@@ -2,67 +2,107 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-
     public GameObject pressEUI;
+
+    public float detectionRadius = 5f;
+
+    public LayerMask interactionLayers;
 
     public Transform carryPoint;
 
-    public float detectionRadius = 5f;
-    public LayerMask itemLayer;
-
-    private InteractableItem closestItem;
+    private MonoBehaviour closestInteractable;
 
     private void Start()
     {
-            pressEUI.SetActive(false);
+        pressEUI.SetActive(false);
     }
 
-    private void Update()
+    void Update()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, itemLayer);
+        bool isCarrying = IsCarryingItem();
 
-        //find the closest InteractableItem
-        InteractableItem newClosest = null;
+        Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, interactionLayers);
+
+        MonoBehaviour newClosest = null;
         float minDist = float.MaxValue;
 
         foreach (Collider c in hits)
         {
-            InteractableItem item = c.GetComponent<InteractableItem>();
-            if (item != null)
+            if (!isCarrying)
             {
-                float dist = Vector3.Distance(transform.position, item.transform.position);
-                if (dist < minDist)
+                InteractableItem item = c.GetComponent<InteractableItem>();
+                if (item != null)
                 {
-                    minDist = dist;
-                    newClosest = item;
+                    if (item.transform.IsChildOf(carryPoint))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        float dist = Vector3.Distance(transform.position, item.transform.position);
+                        if (dist < minDist)
+                        {
+                            minDist = dist;
+                            newClosest = item;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                
+                ShelfStockage shelf = c.GetComponent<ShelfStockage>();
+                if (shelf != null)
+                {
+                    float dist = Vector3.Distance(transform.position, shelf.transform.position);
+                    if (dist < minDist)
+                    {
+                        minDist = dist;
+                        newClosest = shelf;
+                    }
                 }
             }
         }
 
-        // if the closest item changed then we update our closest interactable item
-        if (newClosest != closestItem)
+        if (newClosest != closestInteractable)
         {
-            closestItem = newClosest;
+            closestInteractable = newClosest;
         }
 
-        // if there's no item then we hide the UI
-        if (closestItem == null)
+        if (closestInteractable == null)
         {
             pressEUI.SetActive(false);
             return;
         }
+        else
+        {
+            pressEUI.SetActive(true);
+        }
 
-        // show the UI if we are close enough
-        pressEUI.SetActive(true);
-
-        // if the player presses E call Interaction() from the script interactable object of this object
         if (Input.GetKeyDown(KeyCode.E))
         {
-            closestItem.Interaction(carryPoint);
+            if (!isCarrying && closestInteractable is InteractableItem)
+            {
+                // Pick up 
+                InteractableItem item = (InteractableItem)closestInteractable;
+                item.Interaction();
+            }
+            else if (isCarrying && closestInteractable is ShelfStockage)
+            {
+                // Store item on shelf
+                Debug.Log("HERE");
+                ShelfStockage shelf = (ShelfStockage)closestInteractable;
+                shelf.Interact(this.gameObject);
+            }
         }
     }
 
-    // To visualize
+    private bool IsCarryingItem()
+    {
+        return (carryPoint != null && carryPoint.childCount > 0);
+    }
+
+    // For debug
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

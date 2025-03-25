@@ -2308,7 +2308,7 @@ GameObject:
   - component: {fileID: 592932376}
   m_Layer: 0
   m_Name: BathroomWomen
-  m_TagString: Bathroom
+  m_TagString: WomenBathroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8362,7 +8362,7 @@ GameObject:
   - component: {fileID: 1966196019}
   m_Layer: 0
   m_Name: BathroomMen
-  m_TagString: Bathroom
+  m_TagString: MenBathroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9744,6 +9744,10 @@ PrefabInstance:
     - target: {fileID: 9016437853676807724, guid: 51b2394f4a65d024593c24804fc34653, type: 3}
       propertyPath: money
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016437853676807724, guid: 51b2394f4a65d024593c24804fc34653, type: 3}
+      propertyPath: danceChance
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
