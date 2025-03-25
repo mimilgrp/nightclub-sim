@@ -4,38 +4,44 @@ using System.Collections;
 public class CustomerAI : MonoBehaviour
 {
     public float stamina = 100f;
-    public float argent = 100f;
+    public float money = 100f;
 
-    // Table of percentage of chances to do an action
-    // [ChanceDanse, ChanceDrink, ChanceToilet, ChanceWandering]
-    public float[] characteristic = new float[] { 25f, 25f, 25f, 25f };
+    [Range(0, 100)]
+    public float danceChance = 25f;
+    [Range(0, 100)]
+    public float barChance = 25f;
+    [Range(0, 100)]
+    public float toiletChance = 25f;
+    [Range(0, 100)]
+    public float wanderingChance = 25f;
 
     private bool isBusy = false;
     private CustomerMovementTest movement;
 
     private Transform dancefloorPosition;
     private Transform barPosition;
-    private Transform bathroomPosition;
+    private Transform MenbathroomPosition;
+    private Transform WomenbathroomPosition;
     private Transform wanderingPosition;
+
+    private const float STAMINA_DECREASE_BAR = 5f;
+    private const float STAMINA_DECREASE_DANCEFLOOR = 10f;
+    private const float STAMINA_DECREASE_BATHROOM = 2f;
+    private const float STAMINA_INCREASE_WANDERING = 5f;
+    private const float MONEY_DECREASE_BAR = 5f;
 
     void Start()
     {
         movement = GetComponent<CustomerMovementTest>();
 
-        if (GameObject.FindGameObjectWithTag("Dancefloor") != null)
-            dancefloorPosition = GameObject.FindGameObjectWithTag("Dancefloor").transform;
-
-        if (GameObject.FindGameObjectWithTag("Bar") != null)
-            barPosition = GameObject.FindGameObjectWithTag("Bar").transform;
-
-        if (GameObject.FindGameObjectWithTag("Bathroom") != null)
-            bathroomPosition = GameObject.FindGameObjectWithTag("Bathroom").transform;
-
-        if (GameObject.FindGameObjectWithTag("Wandering") != null)
-            wanderingPosition = GameObject.FindGameObjectWithTag("Wandering").transform;
+        dancefloorPosition = GameObject.FindGameObjectWithTag("Dancefloor").transform;
+        barPosition = GameObject.FindGameObjectWithTag("Bar").transform;
+        MenbathroomPosition = GameObject.FindGameObjectWithTag("MenBathroom").transform;
+        WomenbathroomPosition = GameObject.FindGameObjectWithTag("MenBathroom").transform;
+        wanderingPosition = GameObject.FindGameObjectWithTag("Wandering").transform;
     }
 
-    private void Update()
+    void Update()
     {
         if (stamina <= 0f)
         {
@@ -51,74 +57,60 @@ public class CustomerAI : MonoBehaviour
         }
     }
 
-
     private string ChooseAction()
     {
-
-        float randomValue = Random.Range(0f, 100f);
-        // [ChanceDanse, ChanceDrink, ChanceToilet, ChanceWandering]
-
-        float danceChance = characteristic[0];
-        float barChance = characteristic[1];
-        float bathChance = characteristic[2];
-        float wandChance = characteristic[3];
-
-        if (randomValue <= danceChance)
-        {
+        float totalChance = danceChance + barChance + toiletChance + wanderingChance;
+        float randomValue = Random.Range(0f, totalChance);
+        float accumulatedChance = 0f;
+        accumulatedChance = danceChance;
+        if (randomValue <= accumulatedChance)
             return "Dancefloor";
-        }
-        else if (randomValue <= (danceChance + barChance))
-        {
+        if (randomValue <= (accumulatedChance += barChance))
             return "Bar";
-        }
-        else if (randomValue <= (danceChance + barChance + bathChance))
-        {
+        if (randomValue <= (accumulatedChance += toiletChance))
             return "Bathroom";
-        }
-        else
-        {
-            return "Wandering";
-        }
-
+        
+        return "Wandering";
     }
 
     private IEnumerator ActionManager()
     {
-
         string action = ChooseAction();
+        yield return StartCoroutine(PerformAction(action));
+        isBusy = false;
+    }
 
+    private IEnumerator PerformAction(string action)
+    {
         switch (action)
         {
             case "Bathroom":
-                Debug.Log("Customer goes to the toilet");
-                yield return StartCoroutine(movement.MoveTo(bathroomPosition.position));
-                stamina -= 2f;
-                yield return new WaitForSeconds(Random.Range(5f, 10f));
+                yield return MoveToAndHandleStamina(action, MenbathroomPosition, STAMINA_DECREASE_BATHROOM, Random.Range(5f, 10f));
                 break;
 
             case "Bar":
-                Debug.Log("Customer goes to the bar");
-                yield return StartCoroutine(movement.MoveTo(barPosition.position));
-                argent -= 5f;
-                stamina -= 5f;
-                yield return new WaitForSeconds(Random.Range(3f, 8f));
+                yield return MoveToAndHandleStamina(action, barPosition, STAMINA_DECREASE_BAR, Random.Range(3f, 8f), MONEY_DECREASE_BAR);
                 break;
 
             case "Dancefloor":
-                Debug.Log("Customer goes to the dancefloor");
-                yield return StartCoroutine(movement.MoveTo(dancefloorPosition.position));
-                stamina -= 10f;
-                yield return new WaitForSeconds(Random.Range(10f, 25f));
+                yield return MoveToAndHandleStamina(action, dancefloorPosition, STAMINA_DECREASE_DANCEFLOOR, Random.Range(10f, 25f));
                 break;
 
             case "Wandering":
-                Debug.Log("Customer is wandering");
-                yield return StartCoroutine(movement.MoveTo(wanderingPosition.position));
-                stamina += 5f;
-                yield return new WaitForSeconds(5f);
+                yield return MoveToAndHandleStamina(action, wanderingPosition, STAMINA_INCREASE_WANDERING, 5f);
                 break;
         }
+    }
 
-        isBusy = false;
+    private IEnumerator MoveToAndHandleStamina(string position, Transform targetPosition, float staminaChange, float waitTime, float moneyChange = 0f)
+    {
+        if (targetPosition == null)
+            yield break;
+
+        Debug.Log($"Customer goes to " + position);
+        yield return StartCoroutine(movement.MoveTo(targetPosition.position));
+        stamina += staminaChange;
+        money -= moneyChange;
+        yield return new WaitForSeconds(waitTime);
     }
 }
