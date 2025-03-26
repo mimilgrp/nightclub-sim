@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -25,6 +26,37 @@ public class PlayerInteraction : MonoBehaviour
 
         MonoBehaviour newClosest = null;
         float minDist = float.MaxValue;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!isCarrying && closestInteractable is InteractableItem item)
+            {
+                // Pick up item
+                item.Interaction();
+            }
+            else if (isCarrying)
+            {
+                if (closestInteractable is ShelfStockage shelf)
+                {
+                    float dist = Vector3.Distance(transform.position, shelf.transform.position);
+                    if (dist <= detectionRadius)
+                    {
+                        // Store item on shelf
+                        shelf.Interact(this.gameObject);
+                        return;
+                    }
+                }
+
+                // Drop item down if no shelf near
+                Debug.Log("Drop it now");
+                InteractableItem carriedItem = carryPoint.GetComponentInChildren<InteractableItem>();
+                if (carriedItem != null)
+                {
+                    Debug.Log("Drop item");
+                    carriedItem.Interaction();
+                }
+            }
+        }
 
         foreach (Collider c in hits)
         {
@@ -79,21 +111,9 @@ public class PlayerInteraction : MonoBehaviour
             pressEUI.SetActive(true);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (!isCarrying && closestInteractable is InteractableItem)
-            {
-                // Pick up 
-                InteractableItem item = (InteractableItem)closestInteractable;
-                item.Interaction();
-            }
-            else if (isCarrying && closestInteractable is ShelfStockage)
-            {
-                // Store item on shelf
-                ShelfStockage shelf = (ShelfStockage)closestInteractable;
-                shelf.Interact(this.gameObject);
-            }
-        }
+
+
+        
     }
 
     private bool IsCarryingItem()

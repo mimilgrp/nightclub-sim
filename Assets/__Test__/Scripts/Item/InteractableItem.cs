@@ -11,7 +11,7 @@ public class InteractableItem : MonoBehaviour
 
         if (!isCarried)
         {
-            // pick up
+            // pick 
             Debug.Log("Picking up item: " + gameObject.name);
 
             // Make this item a child of the carryPoint
