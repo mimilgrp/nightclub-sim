@@ -6,12 +6,12 @@ public class PurchaseSubPanel : MonoBehaviour
     public GameObject beveragesPrefab;
 
     private Transform beveragesSpawn;
-    
+
     void Start()
     {
         if (GameObject.FindGameObjectWithTag("BeveragesSpawn") != null)
             beveragesSpawn = GameObject.FindGameObjectWithTag("BeveragesSpawn").transform;
-        
+
         purchaseSubPanel.SetActive(false);
     }
 
@@ -29,7 +29,7 @@ public class PurchaseSubPanel : MonoBehaviour
     {
         SpawnBeverages();
     }
-    
+
     private void SpawnBeverages()
     {
         Instantiate(beveragesPrefab, beveragesSpawn.position, beveragesSpawn.rotation);

@@ -20,8 +20,7 @@ public class CustomerAI : MonoBehaviour
 
     private Transform dancefloorPosition;
     private Transform barPosition;
-    private Transform MenbathroomPosition;
-    private Transform WomenbathroomPosition;
+    private Transform bathroomPosition;
     private Transform wanderingPosition;
 
     private const float STAMINA_DECREASE_BAR = 5f;
@@ -36,8 +35,7 @@ public class CustomerAI : MonoBehaviour
 
         dancefloorPosition = GameObject.FindGameObjectWithTag("Dancefloor").transform;
         barPosition = GameObject.FindGameObjectWithTag("Bar").transform;
-        MenbathroomPosition = GameObject.FindGameObjectWithTag("MenBathroom").transform;
-        WomenbathroomPosition = GameObject.FindGameObjectWithTag("MenBathroom").transform;
+        bathroomPosition = GameObject.FindGameObjectWithTag("Bathroom").transform;
         wanderingPosition = GameObject.FindGameObjectWithTag("Wandering").transform;
     }
 
@@ -85,7 +83,7 @@ public class CustomerAI : MonoBehaviour
         switch (action)
         {
             case "Bathroom":
-                yield return MoveToAndHandleStamina(action, MenbathroomPosition, STAMINA_DECREASE_BATHROOM, Random.Range(5f, 10f));
+                yield return MoveToAndHandleStamina(action, bathroomPosition, STAMINA_DECREASE_BATHROOM, Random.Range(5f, 10f));
                 break;
 
             case "Bar":
