@@ -33,10 +33,22 @@ public class CustomerAI : MonoBehaviour
     {
         movement = GetComponent<CustomerMovementTest>();
 
-        dancefloorPosition = GameObject.FindGameObjectWithTag("Dancefloor").transform;
-        barPosition = GameObject.FindGameObjectWithTag("Bar").transform;
-        bathroomPosition = GameObject.FindGameObjectWithTag("Bathroom").transform;
-        wanderingPosition = GameObject.FindGameObjectWithTag("Wandering").transform;
+        dancefloorPosition = GetTaggedPosition("Dancefloor");
+        barPosition = GetTaggedPosition("Bar");
+        bathroomPosition = GetTaggedPosition("Bathroom");
+        wanderingPosition = GetTaggedPosition("Wandering");
+    }
+
+    private Transform GetTaggedPosition(string tag)
+    {
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(tag);
+
+        if (objectsWithTag.Length == 0)
+            return null;
+
+        int randomIndex = Random.Range(0, objectsWithTag.Length);
+
+        return objectsWithTag[randomIndex].transform;
     }
 
     void Update()
@@ -60,8 +72,7 @@ public class CustomerAI : MonoBehaviour
         float totalChance = danceChance + barChance + toiletChance + wanderingChance;
         float randomValue = Random.Range(0f, totalChance);
         float accumulatedChance = 0f;
-        accumulatedChance = danceChance;
-        if (randomValue <= accumulatedChance)
+        if (randomValue <= (accumulatedChance += danceChance))
             return "Dancefloor";
         if (randomValue <= (accumulatedChance += barChance))
             return "Bar";

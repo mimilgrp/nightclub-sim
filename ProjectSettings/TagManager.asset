@@ -7,9 +7,8 @@ TagManager:
   - Bar
   - Wandering
   - Dancefloor
-  - MenBathroom
-  - WomenBathroom
   - BeveragesSpawn
+  - Bathroom
   layers:
   - Default
   - TransparentFX

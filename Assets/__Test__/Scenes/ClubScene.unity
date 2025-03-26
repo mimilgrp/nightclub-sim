@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 100654474}
   m_Layer: 0
   m_Name: WomenBathroom
-  m_TagString: WomenBathroom
+  m_TagString: Bathroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6713,7 +6713,7 @@ GameObject:
   - component: {fileID: 1642970511}
   m_Layer: 0
   m_Name: MenBathroom
-  m_TagString: MenBathroom
+  m_TagString: Bathroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
