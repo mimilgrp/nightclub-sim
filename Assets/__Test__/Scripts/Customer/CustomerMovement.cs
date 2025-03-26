@@ -1,22 +1,32 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
-public class CustomerMovement : MonoBehaviour
+
+public class CustomerMovementTest : MonoBehaviour
 {
-    public Transform targetDestination; 
-    private NavMeshAgent customer;
+    private NavMeshAgent agent;
 
     void Start()
     {
-        customer = GetComponent<NavMeshAgent>();
-        if (targetDestination != null)
-        {
-            customer.SetDestination(targetDestination.position);
-        }
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    public IEnumerator MoveTo(Vector3 destination)
     {
+        agent.SetDestination(destination);
+
+        while (agent.pathPending)
+        {
+            yield return null;
+        }
+
+
+        while (agent.remainingDistance > agent.stoppingDistance)
+        {
+            yield return null;
+        }
+
 
     }
 }
