@@ -27,11 +27,6 @@ public class PlayerInteraction : MonoBehaviour
         MonoBehaviour newClosest = null;
         float minDist = float.MaxValue;
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-           SceneManager.LoadScene("ComputerPanel", LoadSceneMode.Additive);
-        }
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (!isCarrying && closestInteractable is InteractableItem item)
