@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LookAtTheCamera : MonoBehaviour
+public class InteractionRotation : MonoBehaviour
 {
     void Update()
     {

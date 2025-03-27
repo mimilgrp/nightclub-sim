@@ -1,5 +1,5 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
+/*using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -87,7 +87,7 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                
+
                 ShelfStockage shelf = c.GetComponent<ShelfStockage>();
                 if (shelf != null)
                 {
@@ -118,7 +118,7 @@ public class PlayerInteraction : MonoBehaviour
 
 
 
-        
+
     }
 
     private bool IsCarryingItem()
@@ -132,4 +132,4 @@ public class PlayerInteraction : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
-}
+}*/

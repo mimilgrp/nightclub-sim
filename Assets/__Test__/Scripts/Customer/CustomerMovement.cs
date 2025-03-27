@@ -14,9 +14,4 @@ public class CustomerMovement : MonoBehaviour
             customer.SetDestination(targetDestination.position);
         }
     }
-
-    void Update()
-    {
-
-    }
 }

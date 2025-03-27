@@ -7,10 +7,11 @@ TagManager:
   - Bar
   - Wandering
   - Dancefloor
-  - MenBathroom
-  - WomenBathroom
   - Beverage
+  - Bathroom
   - BeveragesSpawn
+  - NPC
+  - Computer
   layers:
   - Default
   - TransparentFX
@@ -18,9 +19,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Interactable
+  - Item
   - Player
-  - Customer
+  - NPC
   - 
   - 
   - 
