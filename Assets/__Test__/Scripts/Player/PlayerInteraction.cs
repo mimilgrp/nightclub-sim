@@ -1,5 +1,5 @@
 using UnityEngine;
-using static UnityEditor.Progress;
+using UnityEngine.SceneManagement;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -26,6 +26,11 @@ public class PlayerInteraction : MonoBehaviour
 
         MonoBehaviour newClosest = null;
         float minDist = float.MaxValue;
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+           SceneManager.LoadScene("ComputerPanel", LoadSceneMode.Additive);
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
