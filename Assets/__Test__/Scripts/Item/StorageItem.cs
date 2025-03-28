@@ -14,7 +14,7 @@ public class StorageItem : MonoBehaviour
         }
         else
         {
-            stockAmount++;
+            stockAmount += carriedItem.itemQuantity;
             Destroy(carriedItem.gameObject);
 
             Debug.Log("Shelf: Item added, new stock amount: " + stockAmount);
