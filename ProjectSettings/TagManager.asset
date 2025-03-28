@@ -9,9 +9,9 @@ TagManager:
   - Dancefloor
   - Beverage
   - Bathroom
-  - BeveragesSpawn
   - NPC
   - Computer
+  - ShopItemsSpawn
   layers:
   - Default
   - TransparentFX

@@ -3,14 +3,13 @@ using UnityEngine;
 public class ShopSubPanel : MonoBehaviour
 {
     public GameObject shopSubPanel;
-    public GameObject beveragesPrefab;
 
-    private Transform beveragesSpawn;
+    private Transform shopItemsSpaw;
 
     void Start()
     {
-        if (GameObject.FindGameObjectWithTag("BeveragesSpawn") != null)
-            beveragesSpawn = GameObject.FindGameObjectWithTag("BeveragesSpawn").transform;
+        if (GameObject.FindGameObjectWithTag("ShopItemsSpawn") != null)
+            shopItemsSpaw = GameObject.FindGameObjectWithTag("ShopItemsSpawn").transform;
 
         shopSubPanel.SetActive(false);
     }
@@ -25,13 +24,13 @@ public class ShopSubPanel : MonoBehaviour
         shopSubPanel.SetActive(false);
     }
 
-    public void BuyBeverages()
+    public void BuyItem(GameObject itemPrefab)
     {
-        SpawnBeverages();
+        SpawnItem(itemPrefab);
     }
 
-    private void SpawnBeverages()
+    private void SpawnItem(GameObject itemPrefab)
     {
-        Instantiate(beveragesPrefab, beveragesSpawn.position, beveragesSpawn.rotation);
+        Instantiate(itemPrefab, shopItemsSpaw.position, shopItemsSpaw.rotation);
     }
 }
