@@ -11,7 +11,7 @@ public class CustomerAI : MonoBehaviour
     [Range(0, 100)]
     public float barChance = 25f;
     [Range(0, 100)]
-    public float toiletChance = 25f;
+    public float bathroomChance = 25f;
     [Range(0, 100)]
     public float wanderingChance = 25f;
 
@@ -67,46 +67,47 @@ public class CustomerAI : MonoBehaviour
         }
     }
 
-    private string ChooseAction()
+    private CustomerAction ChooseAction()
     {
-        float totalChance = danceChance + barChance + toiletChance + wanderingChance;
+        float totalChance = danceChance + barChance + bathroomChance + wanderingChance;
         float randomValue = Random.Range(0f, totalChance);
         float accumulatedChance = 0f;
-        if (randomValue <= (accumulatedChance += danceChance))
-            return "Dancefloor";
+        
+        if (randomValue <= (accumulatedChance += bathroomChance))
+            return CustomerAction.Bathroom;
         if (randomValue <= (accumulatedChance += barChance))
-            return "Bar";
-        if (randomValue <= (accumulatedChance += toiletChance))
-            return "Bathroom";
+            return CustomerAction.Bar;
+        if (randomValue <= (accumulatedChance += danceChance))
+            return CustomerAction.Dancefloor;
 
-        return "Wandering";
+        return CustomerAction.Wandering;
     }
 
     private IEnumerator ActionManager()
     {
-        string action = ChooseAction();
+        CustomerAction action = ChooseAction();
         yield return StartCoroutine(PerformAction(action));
         isBusy = false;
     }
 
-    private IEnumerator PerformAction(string action)
+    private IEnumerator PerformAction(CustomerAction action)
     {
         switch (action)
         {
-            case "Bathroom":
-                yield return MoveToAndHandleStamina(action, bathroomPosition, STAMINA_DECREASE_BATHROOM, Random.Range(5f, 10f));
+            case CustomerAction.Bathroom:
+                yield return MoveToAndHandleStamina("Bathroom", bathroomPosition, STAMINA_DECREASE_BATHROOM, Random.Range(5f, 10f));
                 break;
 
-            case "Bar":
-                yield return MoveToAndHandleStamina(action, barPosition, STAMINA_DECREASE_BAR, Random.Range(3f, 8f), MONEY_DECREASE_BAR);
+            case CustomerAction.Bar:
+                yield return MoveToAndHandleStamina("Bar", barPosition, STAMINA_DECREASE_BAR, Random.Range(3f, 8f), MONEY_DECREASE_BAR);
                 break;
 
-            case "Dancefloor":
-                yield return MoveToAndHandleStamina(action, dancefloorPosition, STAMINA_DECREASE_DANCEFLOOR, Random.Range(10f, 25f));
+            case CustomerAction.Dancefloor:
+                yield return MoveToAndHandleStamina("Dancefloor", dancefloorPosition, STAMINA_DECREASE_DANCEFLOOR, Random.Range(10f, 25f));
                 break;
 
-            case "Wandering":
-                yield return MoveToAndHandleStamina(action, wanderingPosition, STAMINA_INCREASE_WANDERING, 5f);
+            case CustomerAction.Wandering:
+                yield return MoveToAndHandleStamina("Wandering", wanderingPosition, STAMINA_INCREASE_WANDERING, 5f);
                 break;
         }
     }
@@ -121,5 +122,13 @@ public class CustomerAI : MonoBehaviour
         stamina += staminaChange;
         money -= moneyChange;
         yield return new WaitForSeconds(waitTime);
+    }
+
+    public enum CustomerAction
+    {
+        Bathroom,
+        Bar,
+        Dancefloor,
+        Wandering
     }
 }
