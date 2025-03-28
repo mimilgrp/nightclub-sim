@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PurchaseSubPanel : MonoBehaviour
+public class ShopSubPanel : MonoBehaviour
 {
-    public GameObject purchaseSubPanel;
+    public GameObject shopSubPanel;
     public GameObject beveragesPrefab;
 
     private Transform beveragesSpawn;
@@ -12,17 +12,17 @@ public class PurchaseSubPanel : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("BeveragesSpawn") != null)
             beveragesSpawn = GameObject.FindGameObjectWithTag("BeveragesSpawn").transform;
 
-        purchaseSubPanel.SetActive(false);
+        shopSubPanel.SetActive(false);
     }
 
-    public void OpenPurchaseSubPanel()
+    public void OpenShopSubPanel()
     {
-        purchaseSubPanel.SetActive(true);
+        shopSubPanel.SetActive(true);
     }
 
-    public void ExitPurchaseSubPanel()
+    public void ExitShopSubPanel()
     {
-        purchaseSubPanel.SetActive(false);
+        shopSubPanel.SetActive(false);
     }
 
     public void BuyBeverages()
