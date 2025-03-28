@@ -4,6 +4,7 @@ public class StorageItem : MonoBehaviour
 {
     [Header("Storage Parameters")]
     public int stockAmount = 0;
+    public int stockCapacity = 120;
     public string requiredTag = "";
 
     public void Interact(TakeDropItem carriedItem)
@@ -14,10 +15,19 @@ public class StorageItem : MonoBehaviour
         }
         else
         {
-            stockAmount += carriedItem.itemQuantity;
-            Destroy(carriedItem.gameObject);
+            int itemQuantity = carriedItem.itemQuantity;
 
-            Debug.Log("Shelf: Item added, new stock amount: " + stockAmount);
+            if ((stockAmount + itemQuantity) > stockCapacity)
+            {
+                Debug.Log("Shelf: Insufficient capacity (" + (stockAmount + itemQuantity) + " > " + stockCapacity + ")");
+            }
+            else
+            {
+                stockAmount += itemQuantity;
+                Destroy(carriedItem.gameObject);
+
+                Debug.Log("Shelf: Item added (new stock amount: " + stockAmount + ")");
+            }
         }
     }
 }
