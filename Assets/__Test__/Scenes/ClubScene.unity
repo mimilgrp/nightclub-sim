@@ -6992,8 +6992,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1494844045}
   m_Layer: 0
-  m_Name: BeveragesSpawn
-  m_TagString: BeveragesSpawn
+  m_Name: ShopItemsSpawn
+  m_TagString: ShopItemsSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

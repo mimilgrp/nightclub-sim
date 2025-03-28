@@ -1023,7 +1023,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopSubPanel: {fileID: 296029546}
-  beveragesPrefab: {fileID: 6837347165570562091, guid: eef182c0e44299542828b8111bae309e, type: 3}
 --- !u!114 &1115389998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1741,6 +1740,90 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 436651073}
     m_Modifications:
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 6837347165570562091, guid: fd98663ee1fbbc6468cdd95d3755f22c, type: 3}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 6837347165570562091, guid: 6288254260fb88742af6129b9fd7a622, type: 3}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069428854291870335, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 6837347165570562091, guid: eef182c0e44299542828b8111bae309e, type: 3}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282784193591985865, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Beverage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563606554740791267, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x24
+      objectReference: {fileID: 0}
     - target: {fileID: 4732386494522655708, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1820,6 +1903,10 @@ PrefabInstance:
     - target: {fileID: 4732386494522655708, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225260458962622280, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x12
       objectReference: {fileID: 0}
     - target: {fileID: 8921404425888255492, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_Name

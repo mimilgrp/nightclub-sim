@@ -4,7 +4,10 @@ public class EmployeeSubPanel : MonoBehaviour
 {
     public GameObject employeeSubPanel;
 
-    private Transform beveragesSpawn;
+    void Start()
+    {
+        employeeSubPanel.SetActive(false);
+    }
 
     public void OpenEmployeeSubPanel()
     {
