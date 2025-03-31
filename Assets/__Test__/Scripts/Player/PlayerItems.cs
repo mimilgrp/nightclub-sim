@@ -7,6 +7,8 @@ public class PlayerItems : MonoBehaviour
     public LayerMask interactionLayer;
     public Transform carryPoint;
 
+
+    public bool interactionFreeze = false;
     private bool isCarrying;
     private MonoBehaviour nearestItem;
     
@@ -17,53 +19,57 @@ public class PlayerItems : MonoBehaviour
 
     void Update()
     {
-        isCarrying = IsCarryingItem();
-        MonoBehaviour newNearestItem = GetNearestItem();
+        if (!interactionFreeze)
+        {
+            isCarrying = IsCarryingItem();
+            MonoBehaviour newNearestItem = GetNearestItem();
 
-        if (newNearestItem != nearestItem)
-        {
-            nearestItem = newNearestItem;
-        }
-
-        if (nearestItem == null)
-        {
-            interactionUI.SetActive(false);
-        }
-        else
-        {
-            interactionUI.SetActive(true);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (!isCarrying)
+            if (newNearestItem != nearestItem)
             {
-                if (nearestItem is TakeDropItem takeDropItem)
-                {
-                    // Take item
-                    takeDropItem.Interact(carryPoint);
-                }
-                else if (nearestItem is InteractableItem interactableItem)
-                {
-                    interactableItem.Interact();
-                }
-                
+                nearestItem = newNearestItem;
             }
-            else if (isCarrying)
+
+            if (nearestItem == null)
             {
-                if (nearestItem is StorageItem storageItem)
+                interactionUI.SetActive(false);
+            }
+            else
+            {
+                interactionUI.SetActive(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (!isCarrying)
                 {
-                    // Store item on shelf
-                    storageItem.Interact(carryPoint.GetComponentInChildren<TakeDropItem>());
-                    return;
+                    if (nearestItem is TakeDropItem takeDropItem)
+                    {
+                        // Take item
+                        takeDropItem.Interact(carryPoint);
+                    }
+                    else if (nearestItem is InteractableItem interactableItem)
+                    {
+                        // Interact with Computer
+                        interactableItem.Interact(this.gameObject);
+                    }
+
                 }
-
-                // Drop item down if no shelf near
-                TakeDropItem carriedItem = carryPoint.GetComponentInChildren<TakeDropItem>();
-
-                if (carriedItem != null)
+                else if (isCarrying)
                 {
-                    carriedItem.Interact(carryPoint);
+                    if (nearestItem is StorageItem storageItem)
+                    {
+                        // Store item on shelf
+                        storageItem.Interact(carryPoint.GetComponentInChildren<TakeDropItem>());
+                        return;
+                    }
+
+                    // Drop item down if no shelf near
+                    TakeDropItem carriedItem = carryPoint.GetComponentInChildren<TakeDropItem>();
+
+                    if (carriedItem != null)
+                    {
+                        carriedItem.Interact(carryPoint);
+                    }
                 }
             }
         }
