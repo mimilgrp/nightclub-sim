@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerItems : MonoBehaviour
@@ -49,7 +50,8 @@ public class PlayerItems : MonoBehaviour
                     }
                     else if (nearestItem is InteractableItem interactableItem)
                     {
-                        // Interact with Computer
+                        // Interact with an InteractableItem
+                        Debug.Log("Can interact with : " + nearestItem.tag);
                         interactableItem.Interact(this.gameObject);
                     }
 

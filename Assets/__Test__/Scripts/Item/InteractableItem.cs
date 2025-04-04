@@ -28,6 +28,19 @@ public class InteractableItem : MonoBehaviour
             SceneManager.LoadScene("ComputerPanel", LoadSceneMode.Additive);
             SetupExitButton(playerItems, playerMovement);
         }
+        
+        else if (CompareTag("BarInteraction")){
+            BarInteractionTrigger trigger = GetComponent<BarInteractionTrigger>();
+            if (trigger != null && trigger.CanInteract())
+            {
+                Debug.Log("Interacting with bar.");
+                // Ton interaction ici
+            }
+            else
+            {
+                Debug.Log("You must be near the bar to interact.");
+            }
+        }
     }
 
     private void SetupExitButton(PlayerItems playerItems, PlayerMovement playerMovement)
