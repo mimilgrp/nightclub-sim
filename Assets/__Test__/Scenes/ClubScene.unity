@@ -789,6 +789,8 @@ Transform:
   - {fileID: 126398387}
   - {fileID: 1654006656}
   - {fileID: 1700831531}
+  - {fileID: 1389030304}
+  - {fileID: 796580523}
   - {fileID: 1642970511}
   - {fileID: 100654474}
   - {fileID: 83108380}
@@ -4582,6 +4584,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2390408782112482503, guid: e3282dcae16e1ad49ad3cd68244484b9, type: 3}
   m_PrefabInstance: {fileID: 788091603}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &796580522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 796580523}
+  m_Layer: 0
+  m_Name: Wandering
+  m_TagString: Wandering
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &796580523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796580522}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 158363081}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &815863650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5338,9 +5371,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CustomerPrefab: {fileID: 3338105629223420205, guid: 51b2394f4a65d024593c24804fc34653, type: 3}
-  maxCustomers: 5
-  minSpawnTime: 5
-  maxSpawnTime: 10
+  maxCustomers: 20
+  minSpawnTime: 1
+  maxSpawnTime: 2
 --- !u!4 &937607957
 Transform:
   m_ObjectHideFlags: 0
@@ -7115,6 +7148,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8961127347005329406, guid: 8bcca91749bd9a1488e426141e1cdc88, type: 3}
   m_PrefabInstance: {fileID: 299941602}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1389030303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1389030304}
+  m_Layer: 0
+  m_Name: Dancefloor
+  m_TagString: Dancefloor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1389030304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389030303}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 158363081}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1398388695
 PrefabInstance:
   m_ObjectHideFlags: 0
