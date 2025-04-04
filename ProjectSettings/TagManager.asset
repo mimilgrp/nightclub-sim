@@ -12,6 +12,7 @@ TagManager:
   - NPC
   - Computer
   - ShopItemsSpawn
+  - Beer
   layers:
   - Default
   - TransparentFX
