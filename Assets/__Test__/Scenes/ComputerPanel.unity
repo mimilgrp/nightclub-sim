@@ -460,9 +460,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 576066050462556625, guid: 20a87a1b3b9b82e4d8196d7609c2e864, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1115389998}
-    - targetCorrespondingSourceObject: {fileID: 576066050462556625, guid: 20a87a1b3b9b82e4d8196d7609c2e864, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1115389997}
     - targetCorrespondingSourceObject: {fileID: 576066050462556625, guid: 20a87a1b3b9b82e4d8196d7609c2e864, type: 3}
       insertIndex: -1
@@ -1023,18 +1020,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopSubPanel: {fileID: 296029546}
---- !u!114 &1115389998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115389994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3b00dcf35b73a74c83ef965c3ef4c50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1115389999
 MonoBehaviour:
   m_ObjectHideFlags: 0
