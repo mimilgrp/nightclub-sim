@@ -780,7 +780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 879988930672844838}
   m_Layer: 0
-  m_Name: BeveragesBox12
+  m_Name: BeerBoxof12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 7129269853694509649}
   m_Layer: 6
   m_Name: Object
-  m_TagString: Beverage
+  m_TagString: Beer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
