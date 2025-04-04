@@ -3,40 +3,50 @@ using System.Collections;
 
 public class CustomerAI : MonoBehaviour
 {
-    public float stamina = 100f;
-    public float money = 100f;
-
-    [Range(0, 100)]
-    public float danceChance = 25f;
-    [Range(0, 100)]
-    public float barChance = 25f;
-    [Range(0, 100)]
-    public float bathroomChance = 25f;
-    [Range(0, 100)]
-    public float wanderingChance = 25f;
-
+    public int stamina = 100;
+    public int money = 100;
+    public int danceChance, barChance, bathroomChance, wanderingChance;
+    public int satisfaction = 0;
     private bool isBusy = false;
+
     private CustomerMovementTest movement;
+    private Transform dancefloorPosition, barPosition, bathroomPosition, wanderingPosition;
 
-    private Transform dancefloorPosition;
-    private Transform barPosition;
-    private Transform bathroomPosition;
-    private Transform wanderingPosition;
-
-    private const float STAMINA_DECREASE_BAR = 5f;
-    private const float STAMINA_DECREASE_DANCEFLOOR = 10f;
-    private const float STAMINA_DECREASE_BATHROOM = 2f;
-    private const float STAMINA_INCREASE_WANDERING = 5f;
-    private const float MONEY_DECREASE_BAR = 5f;
+    private const int STAMINA_DECREASE_BAR = 5;
+    private const int STAMINA_DECREASE_DANCEFLOOR = 10;
+    private const int STAMINA_DECREASE_BATHROOM = 2;
+    private const int STAMINA_INCREASE_WANDERING = 5;
+    private const int MONEY_DECREASE_BAR = 5;
 
     void Start()
     {
         movement = GetComponent<CustomerMovementTest>();
-
+        createCustomer();
         dancefloorPosition = GetTaggedPosition("Dancefloor");
         barPosition = GetTaggedPosition("Bar");
         bathroomPosition = GetTaggedPosition("Bathroom");
         wanderingPosition = GetTaggedPosition("Wandering");
+    }
+
+    private void createCustomer()
+    {
+        int total = 100;
+        int random = Random.Range(0, 35);
+        danceChance = random;
+        total -= random;
+
+        random = Random.Range(0, 35);
+        barChance = random;
+        total -= random;
+
+        random = Random.Range(0, 35);
+        while (total - random < 0) {
+            random = Random.Range(0, 35);
+        }
+        wanderingChance = random;
+        total -= random;
+
+        bathroomChance = total;
     }
 
     private Transform GetTaggedPosition(string tag)
@@ -55,7 +65,7 @@ public class CustomerAI : MonoBehaviour
     {
         if (stamina <= 0f)
         {
-            Debug.Log("Customer destroyed");
+            Debug.Log("Customer satisfaction = " + satisfaction);
             Destroy(gameObject);
             return;
         }
@@ -112,15 +122,15 @@ public class CustomerAI : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveToAndHandleStamina(string position, Transform targetPosition, float staminaChange, float waitTime, float moneyChange = 0f)
+    private IEnumerator MoveToAndHandleStamina(string position, Transform targetPosition, int staminaChange, float waitTime, int moneyChange = 0)
     {
         if (targetPosition == null)
             yield break;
 
-        Debug.Log($"Customer goes to " + position);
         yield return StartCoroutine(movement.MoveTo(targetPosition.position));
         stamina += staminaChange;
         money -= moneyChange;
+
         yield return new WaitForSeconds(waitTime);
     }
 
