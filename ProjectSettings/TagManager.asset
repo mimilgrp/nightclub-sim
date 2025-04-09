@@ -13,6 +13,7 @@ TagManager:
   - Computer
   - ShopItemsSpawn
   - Beer
+  - BarInteraction
   layers:
   - Default
   - TransparentFX
