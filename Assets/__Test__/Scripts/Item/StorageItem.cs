@@ -49,4 +49,23 @@ public class StorageItem : MonoBehaviour
         }
         return total;
     }
+    public int GetQuantity(string itemTag)
+    {
+        return stockByType.ContainsKey(itemTag) ? stockByType[itemTag] : 0;
+    }
+    public void RemoveItems(Dictionary<string, int> itemsToRemove)
+    {
+        foreach (var item in itemsToRemove)
+        {
+            if (stockByType.ContainsKey(item.Key))
+            {
+                stockByType[item.Key] -= item.Value;
+
+                if (stockByType[item.Key] <= 0)
+                {
+                    stockByType.Remove(item.Key);
+                }
+            }
+        }
+    }
 }

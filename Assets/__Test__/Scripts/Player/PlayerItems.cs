@@ -1,21 +1,17 @@
+using System;
 using UnityEngine;
 
 public class PlayerItems : MonoBehaviour
 {
-    public GameObject interactionUI;
     public float detectionRadius = 5f;
     public LayerMask interactionLayer;
     public Transform carryPoint;
-
+    public InteractionUI interactionUI;
 
     public bool interactionFreeze = false;
     private bool isCarrying;
     private MonoBehaviour nearestItem;
-    
-    private void Start()
-    {
-        interactionUI.SetActive(false);
-    }
+
 
     void Update()
     {
@@ -31,11 +27,12 @@ public class PlayerItems : MonoBehaviour
 
             if (nearestItem == null)
             {
-                interactionUI.SetActive(false);
+                interactionUI.hideInteraction();
+
             }
             else
             {
-                interactionUI.SetActive(true);
+                interactionUI.showInteraction();
             }
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -49,8 +46,9 @@ public class PlayerItems : MonoBehaviour
                     }
                     else if (nearestItem is InteractableItem interactableItem)
                     {
-                        // Interact with Computer
-                        interactableItem.Interact(this.gameObject);
+                        // Interact with an InteractableItem
+                        Debug.Log("Interact with : " + nearestItem.tag);
+                        interactableItem.Interact();
                     }
 
                 }
@@ -106,10 +104,26 @@ public class PlayerItems : MonoBehaviour
                 else if (c.TryGetComponent<InteractableItem>(out var interactableItem))
                 {
                     float dist = Vector3.Distance(transform.position, interactableItem.transform.position);
-                    if (dist < minDist)
+                    if (interactableItem.tag != "BarInteraction")
                     {
-                        minDist = dist;
-                        newNearestItem = interactableItem;
+                        if (dist < minDist)
+                        {
+                            minDist = dist;
+                            newNearestItem = interactableItem;
+                        }
+                    }
+                    else
+                    {
+                        if (dist < 2f)
+                        {
+                            minDist = dist;
+                            newNearestItem = interactableItem;
+                            interactionUI.showInteraction();
+                        }
+                        else
+                        {
+                            interactionUI.hideInteraction();
+                        }
                     }
                 }
             }
