@@ -5,7 +5,7 @@ using System.Collections;
 public class CustomerMovementTest : MonoBehaviour
 {
     private NavMeshAgent agent;
-    public int zoneRadius = 3;
+    public int zoneRadius = 4;
 
     void Start()
     {

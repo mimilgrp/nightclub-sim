@@ -21,32 +21,16 @@ public class CustomerAI : MonoBehaviour
     void Start()
     {
         movement = GetComponent<CustomerMovementTest>();
-        createCustomer();
+
+        danceChance = Random.Range(30, 50);
+        barChance = Random.Range(15, 30);
+        bathroomChance = Random.Range(10, 25);
+        wanderingChance = Random.Range(10, 20);
+
         dancefloorPosition = GetTaggedPosition("Dancefloor");
         barPosition = GetTaggedPosition("Bar");
         bathroomPosition = GetTaggedPosition("Bathroom");
         wanderingPosition = GetTaggedPosition("Wandering");
-    }
-
-    private void createCustomer()
-    {
-        int total = 100;
-        int random = Random.Range(0, 35);
-        danceChance = random;
-        total -= random;
-
-        random = Random.Range(0, 35);
-        barChance = random;
-        total -= random;
-
-        random = Random.Range(0, 35);
-        while (total - random < 0) {
-            random = Random.Range(0, 35);
-        }
-        wanderingChance = random;
-        total -= random;
-
-        bathroomChance = total;
     }
 
     private Transform GetTaggedPosition(string tag)
@@ -79,9 +63,9 @@ public class CustomerAI : MonoBehaviour
 
     private CustomerAction ChooseAction()
     {
-        float totalChance = danceChance + barChance + bathroomChance + wanderingChance;
-        float randomValue = Random.Range(0f, totalChance);
-        float accumulatedChance = 0f;
+        int totalChance = danceChance + barChance + bathroomChance + wanderingChance;
+        int randomValue = Random.Range(0, totalChance);
+        int accumulatedChance = 0;
         
         if (randomValue <= (accumulatedChance += bathroomChance))
             return CustomerAction.Bathroom;
