@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SocialPlatforms;
 
 public class TimeManager : MonoBehaviour
@@ -18,7 +19,9 @@ public class TimeManager : MonoBehaviour
 
     private DailyFlow dailyFlow;
     private DailyFlow.Shift currentShift;
-    
+
+    private const int SecondsInDay = 86400;
+
     private void Start()
     {
         dailyFlow = GetComponent<DailyFlow>();
@@ -30,22 +33,22 @@ public class TimeManager : MonoBehaviour
         switch (currentShift)
         {
             case DailyFlow.Shift.Preparation:
-                gameTime += Time.deltaTime * preparationTimeScale;
-                if (gameTime >= showingTime && gameTime >= showingTime)
+                IncreaseGameTime(preparationTimeScale);
+                if (gameTime >= showingTime || gameTime < closingTime)
                 {
                     Showing();
                 }
                 break;
             case DailyFlow.Shift.Showing:
-                gameTime += Time.deltaTime * showingTimeScale; 
-                if (gameTime >= closingTime)
+                IncreaseGameTime(showingTimeScale);
+                if (gameTime >= closingTime && gameTime < preparationTime)
                 {
                     Closing();
                 }
                 break;
             case DailyFlow.Shift.Closing:
-                gameTime += Time.deltaTime * closingTimeScale; 
-                if (gameTime >= closingTime + 1)
+                IncreaseGameTime(closingTimeScale);
+                if (gameTime > closingTime && gameTime < showingTime)
                 {
                     Preparation();
                 }
@@ -53,6 +56,12 @@ public class TimeManager : MonoBehaviour
         }
 
         TimeDisplay.Instance.SetTime((int)gameTime);
+    }
+    
+    private void IncreaseGameTime(float timeScale)
+    {
+        gameTime += Time.deltaTime * timeScale;
+        gameTime = ((gameTime % SecondsInDay) + SecondsInDay) % SecondsInDay;
     }
 
     private void Preparation()
@@ -66,11 +75,13 @@ public class TimeManager : MonoBehaviour
     {
         dailyFlow.Showing();
         currentShift = DailyFlow.Shift.Showing;
+        gameTime = showingTime;
     }
 
     private void Closing()
     {
         dailyFlow.Closing();
         currentShift = DailyFlow.Shift.Closing;
+        gameTime = closingTime;
     }
 }
