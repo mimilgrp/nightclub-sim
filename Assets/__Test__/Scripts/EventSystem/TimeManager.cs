@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class TimeManager : MonoBehaviour
 {
     [Header("Game Time")]
-    public float gameTime = 32400;
+    public float gameTime = 32400f;
 
     [Header("Time Scales")]
     public float preparationTimeScale = 180f;
@@ -18,11 +17,13 @@ public class TimeManager : MonoBehaviour
 
     private DailyFlow dailyFlow;
     private DailyFlow.Shift currentShift;
-    
+
+    private const int SecondsInDay = 86400;
+
     private void Start()
     {
         dailyFlow = GetComponent<DailyFlow>();
-        Preparation();
+        SetShift(DailyFlow.Shift.Preparation, (int)gameTime);
     }
 
     private void Update()
@@ -30,47 +31,50 @@ public class TimeManager : MonoBehaviour
         switch (currentShift)
         {
             case DailyFlow.Shift.Preparation:
-                gameTime += Time.deltaTime * preparationTimeScale;
-                if (gameTime >= showingTime && gameTime >= showingTime)
-                {
-                    Showing();
-                }
+                UpdateGameTime(preparationTimeScale);
+                if (IsTimeInRange(showingTime, closingTime))
+                    SetShift(DailyFlow.Shift.Showing, showingTime);
                 break;
+
             case DailyFlow.Shift.Showing:
-                gameTime += Time.deltaTime * showingTimeScale; 
-                if (gameTime >= closingTime)
-                {
-                    Closing();
-                }
+                UpdateGameTime(showingTimeScale);
+                if (IsTimeInRange(closingTime, preparationTime))
+                    SetShift(DailyFlow.Shift.Closing, closingTime);
                 break;
+
             case DailyFlow.Shift.Closing:
-                gameTime += Time.deltaTime * closingTimeScale; 
-                if (gameTime >= closingTime + 1)
-                {
-                    Preparation();
-                }
+                UpdateGameTime(closingTimeScale);
+                if (IsTimeInRange(preparationTime, showingTime))
+                    SetShift(DailyFlow.Shift.Preparation, preparationTime);
                 break;
         }
 
         TimeDisplay.Instance.SetTime((int)gameTime);
     }
 
-    private void Preparation()
+    private void UpdateGameTime(float timeScale)
     {
-        dailyFlow.Preparation();
-        currentShift = DailyFlow.Shift.Preparation;
-        gameTime = preparationTime;
+        gameTime = (gameTime + Time.deltaTime * timeScale) % SecondsInDay;
+        if (gameTime < 0) gameTime += SecondsInDay;
     }
 
-    private void Showing()
+    private bool IsTimeInRange(int start, int end)
     {
-        dailyFlow.Showing();
-        currentShift = DailyFlow.Shift.Showing;
+        return start < end
+            ? gameTime >= start && gameTime < end
+            : gameTime >= start || gameTime < end;
     }
 
-    private void Closing()
+    private void SetShift(DailyFlow.Shift shift, int time)
     {
-        dailyFlow.Closing();
-        currentShift = DailyFlow.Shift.Closing;
+        currentShift = shift;
+        gameTime = time;
+
+        switch (shift)
+        {
+            case DailyFlow.Shift.Preparation: dailyFlow.Preparation(); break;
+            case DailyFlow.Shift.Showing: dailyFlow.Showing(); break;
+            case DailyFlow.Shift.Closing: dailyFlow.Closing(); break;
+        }
     }
 }
