@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static CustomerAI;
 
 public class InteractableItem : MonoBehaviour
 {
