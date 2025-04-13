@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 6481444349909933939}
   m_Layer: 8
   m_Name: Customer
-  m_TagString: Untagged
+  m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,8 +181,9 @@ MonoBehaviour:
   money: 100
   danceChance: 25
   barChance: 25
-  toiletChance: 25
+  bathroomChance: 0
   wanderingChance: 25
+  satisfaction: 0
 --- !u!114 &6481444349909933939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29da925fcfb1fe49bdf8af31877c203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoneRadius: 3
 --- !u!1 &4316358419337343806
 GameObject:
   m_ObjectHideFlags: 0
