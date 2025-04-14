@@ -26,7 +26,7 @@ public class HUDDisplay : MonoBehaviour
 
     public void SetMoney(float money)
     {
-        moneyText.text = string.Format("{0:D2}", money);
+        moneyText.text = string.Format("${0:F2}", money);
     }
 
     public void SetExperience(int experience)

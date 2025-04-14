@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MoneyManager: MonoBehaviour
 {
-    public float money = 0;
+    public float money = 1000;
 
     private void Start()
     {
@@ -14,30 +14,33 @@ public class MoneyManager: MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        DisplayMoney();
+    }
+
     public static MoneyManager Instance { get; private set; }
 
     public void IncreaseMoney(float amount)
     {
         money += amount;
-
-        if (HUDDisplay.Instance != null)
-        {
-            HUDDisplay.Instance.SetMoney(money);
-        }
     }
 
     public void DecreaseMoney(float amount)
     {
         money -= amount;
-
-        if (HUDDisplay.Instance != null)
-        {
-            HUDDisplay.Instance.SetMoney(money);
-        }
     }
 
     public bool HasEnoughMoney(float amount)
     {
         return (money >= amount);
+    }
+
+    public void DisplayMoney()
+    {
+        if (HUDDisplay.Instance != null)
+        {
+            HUDDisplay.Instance.SetMoney(money);
+        }
     }
 }
