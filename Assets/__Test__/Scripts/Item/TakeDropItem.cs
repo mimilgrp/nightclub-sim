@@ -3,6 +3,7 @@ using UnityEngine;
 public class TakeDropItem : MonoBehaviour
 {
     public int itemQuantity;
+    public float price;
 
     private bool isCarried = false;
 
