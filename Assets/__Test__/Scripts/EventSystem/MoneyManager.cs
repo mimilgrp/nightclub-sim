@@ -6,7 +6,17 @@ public class MoneyManager: MonoBehaviour
 {
     public float money = 0;
 
-    public void IncreaseMoney(int amount)
+    private void Start()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
+    public static MoneyManager Instance { get; private set; }
+
+    public void IncreaseMoney(float amount)
     {
         money += amount;
 
@@ -16,7 +26,17 @@ public class MoneyManager: MonoBehaviour
         }
     }
 
-    public bool HasEnoughMoney(int amount)
+    public void DecreaseMoney(float amount)
+    {
+        money -= amount;
+
+        if (HUDDisplay.Instance != null)
+        {
+            HUDDisplay.Instance.SetMoney(money);
+        }
+    }
+
+    public bool HasEnoughMoney(float amount)
     {
         return (money >= amount);
     }
