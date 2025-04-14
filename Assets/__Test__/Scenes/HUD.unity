@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 211219891}
   - component: {fileID: 211219890}
   m_Layer: 5
-  m_Name: Updating Bar
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 275261163}
   - component: {fileID: 275261162}
   m_Layer: 5
-  m_Name: Fully Bar
+  m_Name: PopularityBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 337025917}
   - component: {fileID: 337025916}
   m_Layer: 5
-  m_Name: Current Level
+  m_Name: LevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -414,7 +414,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425699596}
-  - component: {fileID: 425699597}
   m_Layer: 5
   m_Name: Experience
   m_TagString: Untagged
@@ -444,20 +443,6 @@ RectTransform:
   m_AnchoredPosition: {x: 328.5, y: -16}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &425699597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425699595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac6ac56c46c442543bcfb96b6478d10b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xpBar: {fileID: 1711988170}
-  currentLevel: {fileID: 337025916}
 --- !u!1 &517020144
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +455,7 @@ GameObject:
   - component: {fileID: 517020147}
   - component: {fileID: 517020146}
   m_Layer: 5
-  m_Name: Updating Bar
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,7 +776,7 @@ GameObject:
   - component: {fileID: 1646638480}
   - component: {fileID: 1646638479}
   m_Layer: 5
-  m_Name: Current Level
+  m_Name: PopularityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -927,7 +912,7 @@ GameObject:
   - component: {fileID: 1711988171}
   - component: {fileID: 1711988170}
   m_Layer: 5
-  m_Name: Fully Bar
+  m_Name: ExperienceBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1001,7 +986,6 @@ GameObject:
   - component: {fileID: 1791731742}
   - component: {fileID: 1791731744}
   - component: {fileID: 1791731743}
-  - component: {fileID: 1791731745}
   m_Layer: 5
   m_Name: MoneyText
   m_TagString: Untagged
@@ -1129,18 +1113,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791731741}
   m_CullTransparentMesh: 1
---- !u!114 &1791731745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791731741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 057fe98189c0019408e0537a8dab6c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1254286247721652351
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1259,6 +1231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d048f80e4ecf546950bd5688172dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyText: {fileID: 1791731743}
+  experienceBar: {fileID: 1711988170}
+  levelText: {fileID: 337025916}
   timeText: {fileID: 1444866073}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
