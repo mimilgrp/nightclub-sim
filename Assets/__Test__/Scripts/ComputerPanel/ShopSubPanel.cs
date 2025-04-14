@@ -25,8 +25,25 @@ public class ShopSubPanel : MonoBehaviour
     }
 
     public void BuyItem(GameObject itemPrefab)
-    {
-        SpawnItem(itemPrefab);
+    {       
+        if (MoneyManager.Instance != null)
+        {
+            if (itemPrefab.GetComponent<TakeDropItem>() != null)
+            {
+                TakeDropItem item = itemPrefab.GetComponent<TakeDropItem>();
+                float price = item.price;
+
+                if (MoneyManager.Instance.HasEnoughMoney(price))
+                {
+                    MoneyManager.Instance.IncreaseMoney(-price);
+                    SpawnItem(itemPrefab);
+                }
+                else
+                {
+                    Debug.Log("ShopSubPanel: Not enough money");
+                }
+            }
+        }
     }
 
     private void SpawnItem(GameObject itemPrefab)
