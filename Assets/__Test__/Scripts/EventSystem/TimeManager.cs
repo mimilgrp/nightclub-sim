@@ -48,9 +48,9 @@ public class TimeManager : MonoBehaviour
                     SetShift(DailyFlow.Shift.Preparation, preparationTime);
                 break;
         }
-        if (TimeDisplay.Instance != null)
+        if (HUDDisplay.Instance != null)
         {
-            TimeDisplay.Instance.SetTime((int)gameTime);
+            HUDDisplay.Instance.SetTime((int)gameTime);
         }
     }
 
