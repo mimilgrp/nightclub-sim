@@ -1738,7 +1738,7 @@ PrefabInstance:
     - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 6837347165570562091, guid: fd98663ee1fbbc6468cdd95d3755f22c, type: 3}
+      objectReference: {fileID: 2042171350545561165, guid: ec078bcf8c60bd9448a0f16c199fd8e9, type: 3}
     - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
@@ -1762,7 +1762,7 @@ PrefabInstance:
     - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 6837347165570562091, guid: 6288254260fb88742af6129b9fd7a622, type: 3}
+      objectReference: {fileID: 7606915724348047107, guid: cdcb15ccefa4feb4f88d6a5a5e184076, type: 3}
     - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
@@ -1810,7 +1810,7 @@ PrefabInstance:
     - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 6837347165570562091, guid: eef182c0e44299542828b8111bae309e, type: 3}
+      objectReference: {fileID: 2144809258341004682, guid: 5b7798ced48aa794d99bbe122b6a5e28, type: 3}
     - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
