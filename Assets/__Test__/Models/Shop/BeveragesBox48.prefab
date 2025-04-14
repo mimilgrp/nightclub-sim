@@ -5106,7 +5106,7 @@ GameObject:
   - component: {fileID: 7129269853694509649}
   m_Layer: 6
   m_Name: Object
-  m_TagString: Beverage
+  m_TagString: Beer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5216,6 +5216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemQuantity: 48
+  price: 192
 --- !u!1 &9075432335590493860
 GameObject:
   m_ObjectHideFlags: 0

@@ -2211,7 +2211,7 @@ GameObject:
   - component: {fileID: 879988930672844838}
   m_Layer: 0
   m_Name: BeveragesBox24
-  m_TagString: Untagged
+  m_TagString: Beer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2686,7 +2686,7 @@ GameObject:
   - component: {fileID: 7129269853694509649}
   m_Layer: 6
   m_Name: Object
-  m_TagString: Beverage
+  m_TagString: Beer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2772,3 +2772,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemQuantity: 24
+  price: 100.8

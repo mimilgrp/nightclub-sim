@@ -1330,6 +1330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemQuantity: 12
+  price: 54
 --- !u!1 &9115574222527513742
 GameObject:
   m_ObjectHideFlags: 0
