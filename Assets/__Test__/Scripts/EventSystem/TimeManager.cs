@@ -48,8 +48,10 @@ public class TimeManager : MonoBehaviour
                     SetShift(DailyFlow.Shift.Preparation, preparationTime);
                 break;
         }
-
-        TimeDisplay.Instance.SetTime((int)gameTime);
+        if (TimeDisplay.Instance != null)
+        {
+            TimeDisplay.Instance.SetTime((int)gameTime);
+        }
     }
 
     private void UpdateGameTime(float timeScale)
