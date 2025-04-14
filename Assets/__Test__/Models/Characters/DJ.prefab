@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2489294489526330736}
   m_Layer: 8
   m_Name: DJ
-  m_TagString: Player
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
