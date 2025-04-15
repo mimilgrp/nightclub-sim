@@ -20,6 +20,7 @@ public class OptionListener : MonoBehaviour
             return;
         }
 
+        mainCam.fieldOfView = maxFOV;
         grayEffect = mainCam.GetComponent<GrayWhiteView>();
 
         // Trouve automatiquement les composants enfants
