@@ -20,6 +20,7 @@ public class HUDDisplay : MonoBehaviour
         {
             Instance = this;
         }
+        experienceBar.fillAmount = 0;
     }
 
     public static HUDDisplay Instance { get; private set; }
@@ -29,8 +30,9 @@ public class HUDDisplay : MonoBehaviour
         moneyText.text = string.Format("${0:F2}", money);
     }
 
-    public void SetExperience(int experience)
+    public void SetExperience(float experience)
     {
+        Debug.Log("la : " + experience + "  la : " + experience/100);
         experienceBar.fillAmount = experience / 100;
     }
 

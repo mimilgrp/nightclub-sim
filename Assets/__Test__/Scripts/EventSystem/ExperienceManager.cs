@@ -1,14 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class ExperienceManager : MonoBehaviour
 {
-    private int level;
-    private float experience;
+    private int level = 0;
+    private float experience = 0;
 
     void Start()
     {
-        level = 0;
-        experience = 0;
+        StartCoroutine(GainXPOverTime());
     }
     public void AddExperience(int p)
     {
@@ -18,7 +18,6 @@ public class ExperienceManager : MonoBehaviour
         {
             LevelUp();
         }
-
         if (HUDDisplay.Instance != null)
         {
             HUDDisplay.Instance.SetExperience((int)experience);
@@ -33,6 +32,15 @@ public class ExperienceManager : MonoBehaviour
         if (HUDDisplay.Instance != null)
         {
             HUDDisplay.Instance.SetLevel(level);
+        }
+    }
+
+    private IEnumerator GainXPOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+            AddExperience(10);
         }
     }
 }
