@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 626203342}
   - component: {fileID: 626203341}
   m_Layer: 5
-  m_Name: ExitButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
