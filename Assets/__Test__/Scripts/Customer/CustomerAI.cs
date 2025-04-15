@@ -7,7 +7,7 @@ public class CustomerAI2 : MonoBehaviour
     public int stamina = 100;
     public int money = 100;
     public int danceChance, barChance, bathroomChance, wanderingChance;
-    public int satisfaction = 0;
+    public int satisfaction = 10;
     private bool isBusy = false;
 
     private CustomerMovementTest2 movement;
@@ -142,6 +142,7 @@ public class CustomerAI2 : MonoBehaviour
                     stamina += STAMINA_DECREASE_BATHROOM;
                     yield return new WaitForSeconds(Random.Range(5f, 10f));
                     bathroomZone.Exit(bathroomSpot);
+                    satisfaction += 2;
                 }
                 else if (bathroomZone != null && bathroomZone.CanQueue())
                 {
@@ -150,6 +151,7 @@ public class CustomerAI2 : MonoBehaviour
                 }
                 else
                 {
+                    satisfaction -= 1;
                     int random = Random.Range(1, 3);
                     if(random == 1)
                         yield return StartCoroutine(PerformAction(CustomerAction.Wandering));
@@ -167,6 +169,7 @@ public class CustomerAI2 : MonoBehaviour
                     money -= MONEY_DECREASE_BAR;
                     yield return new WaitForSeconds(Random.Range(8f, 15f));
                     barZone.Exit(barSpot);
+                    satisfaction += 3;
                 }
                 else if (barZone.CanQueue())
                 {
@@ -175,6 +178,7 @@ public class CustomerAI2 : MonoBehaviour
                 }
                 else
                 {
+                    satisfaction -= 1;
                     int random = Random.Range(1, 3);
                     if (random == 1)
                         yield return StartCoroutine(PerformAction(CustomerAction.Wandering));
@@ -184,10 +188,12 @@ public class CustomerAI2 : MonoBehaviour
                 break;
 
             case CustomerAction.Dancefloor:
+                satisfaction += 1;
                 yield return MoveToAndHandleStamina(CustomerAction.Dancefloor, danceZone, STAMINA_DECREASE_DANCEFLOOR, Random.Range(10f, 15f));
                 break;
 
             case CustomerAction.Wandering:
+                satisfaction += 1;
                 yield return MoveToAndHandleStamina(CustomerAction.Wandering, wanderingZone, STAMINA_INCREASE_WANDERING, 8f);
                 break;
         }
