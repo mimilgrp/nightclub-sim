@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class OptionListener : MonoBehaviour
 {
     [Header("Zoom Settings")]
-    public float minFOV = 60f;
-    public float maxFOV = 100f;
+    public float minFOV = 10f;
+    public float maxFOV = 30f;
 
     private Camera mainCam;
     private GrayWhiteView grayEffect;
