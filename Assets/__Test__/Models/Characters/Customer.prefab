@@ -118,11 +118,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8320915736172509547}
   - component: {fileID: 3586936301422803787}
-  - component: {fileID: 9016437853676807724}
-  - component: {fileID: 6481444349909933939}
+  - component: {fileID: 7655857321808610344}
+  - component: {fileID: 1361992585301526012}
   m_Layer: 8
   m_Name: Customer
-  m_TagString: Untagged
+  m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +165,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &9016437853676807724
+--- !u!114 &7655857321808610344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,16 +174,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3338105629223420205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be54ed190b04bc741b34193df75cca5e, type: 3}
+  m_Script: {fileID: 11500000, guid: c01a5f2bd34e62549bbefb25a57ea672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stamina: 100
   money: 100
-  danceChance: 25
-  barChance: 25
-  toiletChance: 25
-  wanderingChance: 25
---- !u!114 &6481444349909933939
+  danceChance: 0
+  barChance: 0
+  bathroomChance: 0
+  wanderingChance: 0
+  satisfaction: 0
+--- !u!114 &1361992585301526012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,9 +193,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3338105629223420205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29da925fcfb1fe49bdf8af31877c203, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f069cb32157b6d4a890cb54ff9d8093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wanderingWaitTimeMin: 1
+  wanderingWaitTimeMax: 3
+  wanderingSteps: 5
 --- !u!1 &4316358419337343806
 GameObject:
   m_ObjectHideFlags: 0

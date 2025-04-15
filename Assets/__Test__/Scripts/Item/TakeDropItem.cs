@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class TakeDropItem : MonoBehaviour
 {
+    public int itemQuantity;
+    public float price;
+
     private bool isCarried = false;
+
     public virtual void Interact(Transform carryPoint)
     {
         if (!isCarried)

@@ -1,42 +1,68 @@
 using UnityEngine;
 using System.Collections;
-
-public class CustomerAI : MonoBehaviour
+public class CustomerAI2 : MonoBehaviour
 {
-    public float stamina = 100f;
-    public float money = 100f;
+    private ZoneManager barZone, bathroomZone;
 
-    [Range(0, 100)]
-    public float danceChance = 25f;
-    [Range(0, 100)]
-    public float barChance = 25f;
-    [Range(0, 100)]
-    public float toiletChance = 25f;
-    [Range(0, 100)]
-    public float wanderingChance = 25f;
-
+    public int stamina = 100;
+    public int money = 100;
+    public int danceChance, barChance, bathroomChance, wanderingChance;
+    public int satisfaction = 0;
     private bool isBusy = false;
-    private CustomerMovementTest movement;
 
-    private Transform dancefloorPosition;
-    private Transform barPosition;
-    private Transform bathroomPosition;
-    private Transform wanderingPosition;
+    private CustomerMovementTest2 movement;
+    private Transform /*dancefloorPosition,*/ barPosition, bathroomPosition/*, wanderingPosition*/;
 
-    private const float STAMINA_DECREASE_BAR = 5f;
-    private const float STAMINA_DECREASE_DANCEFLOOR = 10f;
-    private const float STAMINA_DECREASE_BATHROOM = 2f;
-    private const float STAMINA_INCREASE_WANDERING = 5f;
-    private const float MONEY_DECREASE_BAR = 5f;
+    private BoxCollider danceZone;
+    private BoxCollider wanderingZone;
+
+    private CustomerAction? lastAction = null;
+
+    private const int STAMINA_DECREASE_BAR = 5;
+    private const int STAMINA_DECREASE_DANCEFLOOR = 10;
+    private const int STAMINA_DECREASE_BATHROOM = 2;
+    private const int STAMINA_INCREASE_WANDERING = 5;
+    private const int MONEY_DECREASE_BAR = 5;
+    public enum CustomerAction
+    {
+        Bathroom,
+        Bar,
+        Dancefloor,
+        Wandering
+    }
 
     void Start()
     {
-        movement = GetComponent<CustomerMovementTest>();
-
-        dancefloorPosition = GetTaggedPosition("Dancefloor");
+        movement = GetComponent<CustomerMovementTest2>();
+        createCustomer();
+        //dancefloorPosition = GetTaggedPosition("Dancefloor");
         barPosition = GetTaggedPosition("Bar");
         bathroomPosition = GetTaggedPosition("Bathroom");
-        wanderingPosition = GetTaggedPosition("Wandering");
+        //wanderingPosition = GetTaggedPosition("Wandering");
+
+        danceZone = GetTaggedPosition("Dancefloor").GetComponentInChildren<BoxCollider>();
+        wanderingZone = GetTaggedPosition("Wandering").GetComponentInChildren<BoxCollider>();
+
+        barZone = barPosition.GetComponent<ZoneManager>();
+        bathroomZone = bathroomPosition.GetComponent<ZoneManager>();
+    }
+
+    private void createCustomer()
+    {
+        int total = 100;
+        int random = Random.Range(20, 32);
+        danceChance = random;
+        total -= random;
+
+        random = Random.Range(20, 32);
+        barChance = random;
+        total -= random;
+
+        random = Random.Range(20, 32);
+        wanderingChance = random;
+        total -= random;
+
+        bathroomChance = total;
     }
 
     private Transform GetTaggedPosition(string tag)
@@ -55,7 +81,7 @@ public class CustomerAI : MonoBehaviour
     {
         if (stamina <= 0f)
         {
-            Debug.Log("Customer destroyed");
+            Debug.Log("Customer satisfaction = " + satisfaction);
             Destroy(gameObject);
             return;
         }
@@ -67,59 +93,150 @@ public class CustomerAI : MonoBehaviour
         }
     }
 
-    private string ChooseAction()
+    private CustomerAction ChooseAction()
     {
-        float totalChance = danceChance + barChance + toiletChance + wanderingChance;
-        float randomValue = Random.Range(0f, totalChance);
-        float accumulatedChance = 0f;
-        if (randomValue <= (accumulatedChance += danceChance))
-            return "Dancefloor";
-        if (randomValue <= (accumulatedChance += barChance))
-            return "Bar";
-        if (randomValue <= (accumulatedChance += toiletChance))
-            return "Bathroom";
+        CustomerAction chosen;
+        int attempts = 0;
 
-        return "Wandering";
+        do
+        {
+            float totalChance = danceChance + barChance + bathroomChance + wanderingChance;
+            float randomValue = Random.Range(0f, totalChance);
+            float accumulatedChance = 0f;
+
+            if (randomValue <= (accumulatedChance += bathroomChance))
+                chosen = CustomerAction.Bathroom;
+            else if (randomValue <= (accumulatedChance += barChance))
+                chosen = CustomerAction.Bar;
+            else if (randomValue <= (accumulatedChance += danceChance))
+                chosen = CustomerAction.Dancefloor;
+            else
+                chosen = CustomerAction.Wandering;
+
+            attempts++;
+            // max 10 tentatives, pour éviter une boucle infinie si toutes les actions sont égales
+        } while (lastAction.HasValue && chosen == lastAction.Value && attempts < 10);
+
+        lastAction = chosen;
+        return chosen;
     }
+
 
     private IEnumerator ActionManager()
     {
-        string action = ChooseAction();
+        CustomerAction action = ChooseAction();
         yield return StartCoroutine(PerformAction(action));
         isBusy = false;
     }
 
-    private IEnumerator PerformAction(string action)
+    private IEnumerator PerformAction(CustomerAction action)
     {
+        Debug.Log("Action en cours : "+ action);
         switch (action)
         {
-            case "Bathroom":
-                yield return MoveToAndHandleStamina(action, bathroomPosition, STAMINA_DECREASE_BATHROOM, Random.Range(5f, 10f));
+            case CustomerAction.Bathroom:
+                Transform bathroomSpot;
+                if (bathroomZone != null && bathroomZone.TryEnter(out bathroomSpot))
+                {
+                    yield return StartCoroutine(movement.MoveToExact(bathroomSpot.position));
+                    stamina += STAMINA_DECREASE_BATHROOM;
+                    yield return new WaitForSeconds(Random.Range(5f, 10f));
+                    bathroomZone.Exit(bathroomSpot);
+                }
+                else if (bathroomZone != null && bathroomZone.CanQueue())
+                {
+                    bathroomZone.EnqueueCustomer(transform);
+                    yield return StartCoroutine(WaitInQueue(bathroomZone, STAMINA_DECREASE_BATHROOM, 0));
+                }
+                else
+                {
+                    int random = Random.Range(1, 3);
+                    if(random == 1)
+                        yield return StartCoroutine(PerformAction(CustomerAction.Wandering));
+                    else
+                        yield return StartCoroutine(PerformAction(CustomerAction.Dancefloor));
+                }
                 break;
 
-            case "Bar":
-                yield return MoveToAndHandleStamina(action, barPosition, STAMINA_DECREASE_BAR, Random.Range(3f, 8f), MONEY_DECREASE_BAR);
+            case CustomerAction.Bar:
+                Transform barSpot;
+                if (barZone != null && barZone.TryEnter(out barSpot))
+                {
+                    yield return StartCoroutine(movement.MoveToExact(barSpot.position));
+                    stamina += STAMINA_DECREASE_BAR;
+                    money -= MONEY_DECREASE_BAR;
+                    yield return new WaitForSeconds(Random.Range(8f, 15f));
+                    barZone.Exit(barSpot);
+                }
+                else if (barZone.CanQueue())
+                {
+                    barZone.EnqueueCustomer(transform);
+                    yield return StartCoroutine(WaitInQueue(barZone, MONEY_DECREASE_BAR, MONEY_DECREASE_BAR));
+                }
+                else
+                {
+                    int random = Random.Range(1, 3);
+                    if (random == 1)
+                        yield return StartCoroutine(PerformAction(CustomerAction.Wandering));
+                    else
+                        yield return StartCoroutine(PerformAction(CustomerAction.Dancefloor));
+                }
                 break;
 
-            case "Dancefloor":
-                yield return MoveToAndHandleStamina(action, dancefloorPosition, STAMINA_DECREASE_DANCEFLOOR, Random.Range(10f, 25f));
+            case CustomerAction.Dancefloor:
+                yield return MoveToAndHandleStamina(CustomerAction.Dancefloor, danceZone, STAMINA_DECREASE_DANCEFLOOR, Random.Range(10f, 15f));
                 break;
 
-            case "Wandering":
-                yield return MoveToAndHandleStamina(action, wanderingPosition, STAMINA_INCREASE_WANDERING, 5f);
+            case CustomerAction.Wandering:
+                yield return MoveToAndHandleStamina(CustomerAction.Wandering, wanderingZone, STAMINA_INCREASE_WANDERING, 8f);
                 break;
         }
     }
 
-    private IEnumerator MoveToAndHandleStamina(string position, Transform targetPosition, float staminaChange, float waitTime, float moneyChange = 0f)
+    private IEnumerator MoveToAndHandleStamina(CustomerAction position, BoxCollider targetZone, int staminaChange, float waitTime, int moneyChange = 0)
     {
-        if (targetPosition == null)
+        if (targetZone == null)
             yield break;
 
-        Debug.Log($"Customer goes to " + position);
-        yield return StartCoroutine(movement.MoveTo(targetPosition.position));
         stamina += staminaChange;
         money -= moneyChange;
-        yield return new WaitForSeconds(waitTime);
+        if (position == CustomerAction.Dancefloor)
+        {
+            yield return StartCoroutine(movement.MoveToZoneRandom(targetZone));
+            yield return new WaitForSeconds(waitTime);
+        }
+        else
+        {
+            yield return StartCoroutine(movement.WanderInZone(targetZone));
+            yield break;
+        }
+    }
+
+    private IEnumerator WaitInQueue(ZoneManager zone, int staminaChange, int moneyChange)
+    {
+        float waitTime = 0f;
+        float maxWaitTime = 15f;
+
+        while (waitTime < maxWaitTime)
+        {
+            if (zone.HasFreeSpot())
+            {
+                Transform spot;
+                if (zone.TryEnter(out spot))
+                {
+                    yield return StartCoroutine(movement.MoveToExact(spot.position));
+                    stamina += staminaChange;
+                    money -= moneyChange;
+                    yield return new WaitForSeconds(Random.Range(3f, 8f)); // ou paramétrable aussi si tu veux
+                    zone.Exit(spot);
+                    yield break;
+                }
+            }
+
+            waitTime += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return StartCoroutine(PerformAction(CustomerAction.Wandering)); // trop d'attente
     }
 }

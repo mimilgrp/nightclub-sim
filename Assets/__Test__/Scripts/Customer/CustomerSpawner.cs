@@ -4,20 +4,35 @@ using System.Collections;
 public class CustomerSpawner : MonoBehaviour
 {
     public GameObject CustomerPrefab;
+    public string customerTag = "Customer";
 
     public int maxCustomers = 5;
     public float minSpawnTime = 5f;
     public float maxSpawnTime = 10f;
 
-    private int customerNumber = 0;
-
-    void Start()
+    public void StartSpawnCustomers()
     {
+        Debug.Log("CustomerSpawner: Start spawn customers");
         StartCoroutine(SpawnCustomers());
+    }
+
+    public void KillCustomers()
+    {
+        Debug.Log("CustomerSpawner: Kill customers");
+        StopAllCoroutines();
+
+        GameObject[] customers = GameObject.FindGameObjectsWithTag("Customer");
+
+        foreach (GameObject customer in customers)
+        {
+            Destroy(customer);
+        }
     }
 
     IEnumerator SpawnCustomers()
     {
+        int customerNumber = 0;
+
         while (customerNumber < maxCustomers)
         {
             float randomDelay = Random.Range(minSpawnTime, maxSpawnTime);
