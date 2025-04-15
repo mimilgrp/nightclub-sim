@@ -32,7 +32,6 @@ public class HUDDisplay : MonoBehaviour
 
     public void SetExperience(float experience)
     {
-        Debug.Log("la : " + experience + "  la : " + experience/100);
         experienceBar.fillAmount = experience / 100;
     }
 
