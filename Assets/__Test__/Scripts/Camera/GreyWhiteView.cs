@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class GrayWhiteView : MonoBehaviour
+public class GreyWhiteView : MonoBehaviour
 {
 
-    public Material grayscaleMaterial;
+    public Material greyscaleMaterial;
 
     private void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
-        if (grayscaleMaterial != null)
+        if (greyscaleMaterial != null)
         {
-            Graphics.Blit(src, dest, grayscaleMaterial);
+            Graphics.Blit(src, dest, greyscaleMaterial);
         }
         else
         {
