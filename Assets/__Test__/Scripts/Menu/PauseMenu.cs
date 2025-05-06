@@ -1,67 +1,51 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject mainPanel;
+    public GameObject pausePanel;
     public GameObject optionPanel;
-
-    private Camera mainCam;
 
     private void Start()
     {
-        mainCam = Camera.main;
-
         Time.timeScale = 0f;
-        mainPanel.SetActive(true);
+        pausePanel.SetActive(true);
         optionPanel.SetActive(false);
-
-        Button resumeButton = transform.Find("MainPanel/ResumeButton")?.GetComponent<Button>();
-        Button optionButton = transform.Find("MainPanel/OptionButton")?.GetComponent<Button>();
-        Button quitButton = transform.Find("MainPanel/QuitButton")?.GetComponent<Button>();
-        Button exitButton = transform.Find("OptionPanel/ExitButton")?.GetComponent<Button>();
-
-        if (resumeButton != null)
-            resumeButton.onClick.AddListener(Resume);
-
-        if (optionButton != null)
-            optionButton.onClick.AddListener(Option);
-
-        if (quitButton != null)
-            quitButton.onClick.AddListener(Quit);
-
-        if (exitButton != null)
-            exitButton.onClick.AddListener(backButton);
     }
 
     public void Resume()
     {
-        Time.timeScale = 1f;
         if (MenuListener.Instance != null)
         {
+            Time.timeScale = 1f;
             MenuListener.Instance.CloseMenu();
         }
         else
         {
-            Debug.LogWarning("MenuListener non trouvé !");
+            Debug.LogWarning("PauseMenu: MenuListener not found");
         }
     }
 
-    public void Option()
+    public void OpenOptionPanel()
     {
-        mainPanel.SetActive(false);
+        pausePanel.SetActive(false);
         optionPanel.SetActive(true);
+    }
+
+    public void ExitOptionPanel()
+    {
+        pausePanel.SetActive(true);
+        optionPanel.SetActive(false);
+    }
+
+    public void Home()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void Quit()
     {
-        Debug.Log("Quitter le jeu...");
+        Debug.Log("PauseMenu: Quit game");
         Application.Quit();
-    }
-
-    public void backButton()
-    {
-        optionPanel.SetActive(false);
-        mainPanel.SetActive(true);
     }
 }
