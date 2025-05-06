@@ -49,7 +49,7 @@ public class MenuListener : MonoBehaviour
         playerMovement.movementFreeze = true;
         Time.timeScale = 0f;
 
-        SceneManager.LoadScene("MenuPanel", LoadSceneMode.Additive);
+        SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
     }
 
     public void CloseMenu()
@@ -59,9 +59,9 @@ public class MenuListener : MonoBehaviour
         playerMovement.movementFreeze = false;
         Time.timeScale = 1f;
 
-        if (SceneManager.GetSceneByName("MenuPanel").isLoaded)
+        if (SceneManager.GetSceneByName("PauseMenu").isLoaded)
         {
-            SceneManager.UnloadSceneAsync("MenuPanel");
+            SceneManager.UnloadSceneAsync("PauseMenu");
         }
     }
 }

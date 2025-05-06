@@ -1831,8 +1831,8 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585551}
   - component: {fileID: 330585548}
-  - component: {fileID: 330585549}
   - component: {fileID: 330585550}
+  - component: {fileID: 330585552}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1876,23 +1876,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1894780190}
-  minXZ: {x: -20, y: -100}
-  maxXZ: {x: 20, y: -50}
+  minXZ: {x: -41, y: -109}
+  maxXZ: {x: 41, y: -27}
   followSpeed: 10
   height: 117
---- !u!114 &330585549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60cfeafc96c63e646a22124f7294f7d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grayscaleMaterial: {fileID: 2100000, guid: 21bbd5bd8106aa64381ca34f68afc84f, type: 2}
+  ratioFOV: 0.35
 --- !u!20 &330585550
 Camera:
   m_ObjectHideFlags: 0
@@ -1926,7 +1914,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 30
+  field of view: 20
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1988,6 +1976,19 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &330585552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7b0f1f3a0d3b7419dd48a157831119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greyscaleMaterial: {fileID: 2100000, guid: 21bbd5bd8106aa64381ca34f68afc84f, type: 2}
 --- !u!1 &338374586
 GameObject:
   m_ObjectHideFlags: 0
@@ -13755,10 +13756,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Podium
       objectReference: {fileID: 0}
-    - target: {fileID: 4371674427053714569, guid: 9cbba9a7de72a8c4baa36e51ec6dd2db, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7682943575960431921, guid: 9cbba9a7de72a8c4baa36e51ec6dd2db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13815,10 +13812,6 @@ PrefabInstance:
     - target: {fileID: 7377642878354172426, guid: 6cb30f370a6aab14eaed0c98ddf5dedc, type: 3}
       propertyPath: m_Name
       value: QuadDeck
-      objectReference: {fileID: 0}
-    - target: {fileID: 7377642878354172426, guid: 6cb30f370a6aab14eaed0c98ddf5dedc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8568952626496456353, guid: 6cb30f370a6aab14eaed0c98ddf5dedc, type: 3}
       propertyPath: m_LocalPosition.x
