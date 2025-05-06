@@ -1876,10 +1876,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1894780190}
-  minXZ: {x: -20, y: -100}
-  maxXZ: {x: 20, y: -50}
+  minXZ: {x: -41, y: -109}
+  maxXZ: {x: 41, y: -27}
   followSpeed: 10
   height: 117
+  ratioFOV: 0.35
 --- !u!20 &330585550
 Camera:
   m_ObjectHideFlags: 0
@@ -1913,7 +1914,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 30
+  field of view: 20
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
