@@ -7,6 +7,10 @@ public class HUDDisplay : MonoBehaviour
     [Header("Money")]
     public TextMeshProUGUI moneyText;
 
+    [Header("Popularity")]
+    public Image popularityBar;
+    public TextMeshProUGUI popularityText;
+
     [Header("Experience")]
     public Image experienceBar;
     public TextMeshProUGUI levelText;
@@ -28,6 +32,12 @@ public class HUDDisplay : MonoBehaviour
     public void SetMoney(float money)
     {
         moneyText.text = string.Format("${0:F2}", money);
+    }
+
+    public void SetPopularity(float popularity)
+    {
+        popularityBar.fillAmount = popularity / 100;
+        popularityText.text = string.Format("{0:F0}%", popularity);
     }
 
     public void SetExperience(float experience)

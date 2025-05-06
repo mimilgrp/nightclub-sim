@@ -1232,6 +1232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1791731743}
+  popularityBar: {fileID: 275261162}
+  popularityText: {fileID: 1646638479}
   experienceBar: {fileID: 1711988170}
   levelText: {fileID: 337025916}
   timeText: {fileID: 1444866073}
