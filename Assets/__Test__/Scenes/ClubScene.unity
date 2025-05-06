@@ -13756,10 +13756,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Podium
       objectReference: {fileID: 0}
-    - target: {fileID: 4371674427053714569, guid: 9cbba9a7de72a8c4baa36e51ec6dd2db, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7682943575960431921, guid: 9cbba9a7de72a8c4baa36e51ec6dd2db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13816,10 +13812,6 @@ PrefabInstance:
     - target: {fileID: 7377642878354172426, guid: 6cb30f370a6aab14eaed0c98ddf5dedc, type: 3}
       propertyPath: m_Name
       value: QuadDeck
-      objectReference: {fileID: 0}
-    - target: {fileID: 7377642878354172426, guid: 6cb30f370a6aab14eaed0c98ddf5dedc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8568952626496456353, guid: 6cb30f370a6aab14eaed0c98ddf5dedc, type: 3}
       propertyPath: m_LocalPosition.x
