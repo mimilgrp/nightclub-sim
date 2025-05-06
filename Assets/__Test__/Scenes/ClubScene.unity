@@ -12137,10 +12137,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Security
       objectReference: {fileID: 0}
-    - target: {fileID: 2827343378305278291, guid: b072ca1937912714f8987053fb1314b7, type: 3}
-      propertyPath: m_TagString
-      value: NPC
-      objectReference: {fileID: 0}
     - target: {fileID: 7517001968738913962, guid: b072ca1937912714f8987053fb1314b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.44122
