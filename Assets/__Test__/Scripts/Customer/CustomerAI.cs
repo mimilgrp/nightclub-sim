@@ -131,7 +131,6 @@ public class CustomerAI2 : MonoBehaviour
 
     private IEnumerator PerformAction(CustomerAction action)
     {
-        Debug.Log("Action en cours : "+ action);
         switch (action)
         {
             case CustomerAction.Bathroom:
