@@ -6,6 +6,9 @@ public class StorageItem : MonoBehaviour
     public enum Beverage
     {
         Beer,
+        Vodka,
+        Tequila,
+        Liquor
     }
 
     [Header("Storage Parameters")]
@@ -25,13 +28,13 @@ public class StorageItem : MonoBehaviour
 
             if (string.IsNullOrEmpty(itemTag))
             {
-                Debug.LogWarning("L'objet transporté n'a pas de tag !");
+                Debug.LogWarning("L'objet transportï¿½ n'a pas de tag !");
                 return;
             }
 
             if (TotalStock + itemQuantity > stockCapacity)
             {
-                Debug.Log($"Shelf: Capacité insuffisante ({TotalStock + itemQuantity} > {stockCapacity})");
+                Debug.Log($"Shelf: Capacitï¿½ insuffisante ({TotalStock + itemQuantity} > {stockCapacity})");
                 return;
             }
 
@@ -45,7 +48,7 @@ public class StorageItem : MonoBehaviour
             }
 
             Destroy(carriedItem.gameObject);
-            Debug.Log($"Shelf: {itemQuantity} {itemTag} ajoutés. Stock actuel : {stockByType[itemTag]} ({TotalStock}/{stockCapacity})");
+            Debug.Log($"Shelf: {itemQuantity} {itemTag} ajoutï¿½s. Stock actuel : {stockByType[itemTag]} ({TotalStock}/{stockCapacity})");
         }
     }
     private int GetTotalStock()
