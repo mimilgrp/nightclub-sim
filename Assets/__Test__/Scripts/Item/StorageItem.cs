@@ -28,13 +28,13 @@ public class StorageItem : MonoBehaviour
 
             if (string.IsNullOrEmpty(itemTag))
             {
-                Debug.LogWarning("L'objet transport� n'a pas de tag !");
+                Debug.LogWarning("StorageItem: item has no tag");
                 return;
             }
 
             if (TotalStock + itemQuantity > stockCapacity)
             {
-                Debug.Log($"Shelf: Capacit� insuffisante ({TotalStock + itemQuantity} > {stockCapacity})");
+                Debug.Log($"StorageItem: insufficient capacity ({TotalStock + itemQuantity} > {stockCapacity})");
                 return;
             }
 
@@ -48,7 +48,12 @@ public class StorageItem : MonoBehaviour
             }
 
             Destroy(carriedItem.gameObject);
-            Debug.Log($"Shelf: {itemQuantity} {itemTag} ajout�s. Stock actuel : {stockByType[itemTag]} ({TotalStock}/{stockCapacity})");
+            Debug.Log($"StorageItem: {itemQuantity} {itemTag} added, item stock: {stockByType[itemTag]}/{stockCapacity}, total stock: {TotalStock}");
+        }
+        else
+        {
+            Debug.LogWarning("StorageItem: item has unauthorized tag");
+            return;
         }
     }
     private int GetTotalStock()
