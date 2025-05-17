@@ -28,6 +28,7 @@ public class TakeDropItem : MonoBehaviour
 
             // Detach object from the carryPoint
             transform.SetParent(null);
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
             isCarried = false;
         }
     }
