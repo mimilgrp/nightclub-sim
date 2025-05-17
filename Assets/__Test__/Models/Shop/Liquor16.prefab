@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5460882607827163633}
   m_Layer: 6
   m_Name: Liquor16
-  m_TagString: Beer
+  m_TagString: Liquor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

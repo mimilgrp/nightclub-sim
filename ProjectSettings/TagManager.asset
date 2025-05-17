@@ -15,6 +15,9 @@ TagManager:
   - BarInteraction
   - Customer
   - Stain
+  - Liquor
+  - Tequila
+  - Vodka
   layers:
   - Default
   - TransparentFX
