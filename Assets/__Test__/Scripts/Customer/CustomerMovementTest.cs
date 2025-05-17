@@ -5,6 +5,7 @@ using System.Collections;
 public class CustomerMovementTest2 : MonoBehaviour
 {
     private NavMeshAgent agent;
+    public Animator animator;
     public float wanderingWaitTimeMin = 1f;
     public float wanderingWaitTimeMax = 3f;
     public int wanderingSteps = 5;
@@ -18,23 +19,29 @@ public class CustomerMovementTest2 : MonoBehaviour
     public IEnumerator MoveToExact(Vector3 position)
     {
         agent.SetDestination(position);
+        animator.SetBool("IsWalking", true);
 
         while (agent.pathPending)
             yield return null;
 
         while (agent.remainingDistance > agent.stoppingDistance)
             yield return null;
+
+        animator.SetBool("IsWalking", false);
     }
     public IEnumerator MoveToZoneRandom(BoxCollider zone)
     {
         Vector3 destination = GetRandomPointInBox(zone);
         agent.SetDestination(destination);
+        animator.SetBool("IsWalking", true);
 
         while (agent.pathPending)
             yield return null;
 
         while (agent.remainingDistance > agent.stoppingDistance)
             yield return null;
+
+        animator.SetBool("IsWalking", false);
     }
 
     // Wandering : marcher plusieurs fois dans une zone
@@ -44,6 +51,7 @@ public class CustomerMovementTest2 : MonoBehaviour
         {
             Vector3 destination = GetRandomPointInBox(zone);
             agent.SetDestination(destination);
+            animator.SetBool("IsWalking", true);
 
             while (agent.pathPending)
                 yield return null;
@@ -51,6 +59,7 @@ public class CustomerMovementTest2 : MonoBehaviour
             while (agent.remainingDistance > agent.stoppingDistance)
                 yield return null;
 
+            animator.SetBool("IsWalking", false);
             yield return new WaitForSeconds(Random.Range(wanderingWaitTimeMin, wanderingWaitTimeMax));
         }
     }
