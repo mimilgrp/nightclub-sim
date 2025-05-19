@@ -52,15 +52,15 @@ public class StorageItem : MonoBehaviour
             }
 
             Destroy(carriedItem.gameObject);
+            Debug.Log($"StorageItem: {itemQuantity} {itemTag} added, item stock: {stockByType[itemTag]}/{stockCapacity}, total stock: {TotalStock}");
             if (!isAnimating && fridgeAnimator != null)
             {
-            }
                 StartCoroutine(PlayFridgeAnimation());
-            {
+            }
             else
+            {
                 Debug.Log("Fridge Animation Condition not verified");
             }
-            Debug.Log($"StorageItem: {itemQuantity} {itemTag} added, item stock: {stockByType[itemTag]}/{stockCapacity}, total stock: {TotalStock}");
         }
         else
         {
