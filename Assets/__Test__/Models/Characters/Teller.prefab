@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4987966606998290173
+--- !u!1 &2827343378305278291
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5234842350168630083}
+  - component: {fileID: 7517001968738913962}
+  - component: {fileID: 5822103560169150409}
+  - component: {fileID: 2489294489526330736}
   m_Layer: 8
   m_Name: Teller
   m_TagString: NPC
@@ -16,29 +18,70 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5234842350168630083
+--- !u!4 &7517001968738913962
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4987966606998290173}
+  m_GameObject: {fileID: 2827343378305278291}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6071055001522825503}
+  - {fileID: 636750674890169670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &6037639516772962036
+--- !u!143 &5822103560169150409
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827343378305278291}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 3
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!208 &2489294489526330736
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2827343378305278291}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!1001 &1106909279546047149
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5234842350168630083}
+    m_TransformParent: {fileID: 7517001968738913962}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c551010f4634b124a8d53e148c9a7c1d, type: 3}
       propertyPath: m_LocalScale.x
@@ -46,11 +89,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c551010f4634b124a8d53e148c9a7c1d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0687912
+      value: 1.0687913
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c551010f4634b124a8d53e148c9a7c1d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5500993
+      value: 1.5500994
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c551010f4634b124a8d53e148c9a7c1d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -105,8 +148,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c551010f4634b124a8d53e148c9a7c1d, type: 3}
---- !u!4 &6071055001522825503 stripped
+--- !u!4 &636750674890169670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c551010f4634b124a8d53e148c9a7c1d, type: 3}
-  m_PrefabInstance: {fileID: 6037639516772962036}
+  m_PrefabInstance: {fileID: 1106909279546047149}
   m_PrefabAsset: {fileID: 0}
