@@ -22,6 +22,11 @@ public class TimeManager : MonoBehaviour
 
     private void Start()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+
         dailyFlow = GetComponent<DailyFlow>();
         SetShift(DailyFlow.Shift.Preparation, (int)gameTime);
     }
@@ -53,6 +58,8 @@ public class TimeManager : MonoBehaviour
             HUDDisplay.Instance.SetTime((int)gameTime);
         }
     }
+
+    public static TimeManager Instance { get; private set; }
 
     private void UpdateGameTime(float timeScale)
     {

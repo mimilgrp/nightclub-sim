@@ -5532,7 +5532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1355575c154843f4db662166179f2d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTime: 81000
+  gameTime: 77400
   preparationTimeScale: 180
   showingTimeScale: 120
   closingTimeScale: 0
