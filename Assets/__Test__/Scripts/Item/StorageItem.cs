@@ -1,8 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StorageItem : MonoBehaviour
 {
+    public Animator fridgeAnimator;
+    private bool isAnimating = false;
+
     public enum Beverage
     {
         Beer,
@@ -48,6 +52,14 @@ public class StorageItem : MonoBehaviour
             }
 
             Destroy(carriedItem.gameObject);
+            if (!isAnimating && fridgeAnimator != null)
+            {
+            }
+                StartCoroutine(PlayFridgeAnimation());
+            {
+            else
+                Debug.Log("Fridge Animation Condition not verified");
+            }
             Debug.Log($"StorageItem: {itemQuantity} {itemTag} added, item stock: {stockByType[itemTag]}/{stockCapacity}, total stock: {TotalStock}");
         }
         else
@@ -83,5 +95,21 @@ public class StorageItem : MonoBehaviour
                 }
             }
         }
+        if (!isAnimating && fridgeAnimator != null)
+        {
+            StartCoroutine(PlayFridgeAnimation());
+        }
+        else
+        {
+            Debug.Log("Fridge Animation Condition not verified");
+        }
     }
+    IEnumerator PlayFridgeAnimation()
+    {
+        isAnimating = true;
+        fridgeAnimator.Play("fridgeAnimation", 0, 0f);
+        yield return new WaitForSeconds(2f);
+        isAnimating = false;
+    }
+
 }
