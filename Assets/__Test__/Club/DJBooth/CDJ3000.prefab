@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8568952626496456353}
   m_Layer: 0
-  m_Name: QuadDeck
+  m_Name: CDJ3000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
