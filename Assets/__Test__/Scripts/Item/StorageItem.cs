@@ -1,11 +1,18 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StorageItem : MonoBehaviour
 {
+    public Animator fridgeAnimator;
+    private bool isAnimating = false;
+
     public enum Beverage
     {
         Beer,
+        Vodka,
+        Tequila,
+        Liquor
     }
 
     [Header("Storage Parameters")]
@@ -25,13 +32,13 @@ public class StorageItem : MonoBehaviour
 
             if (string.IsNullOrEmpty(itemTag))
             {
-                Debug.LogWarning("L'objet transporté n'a pas de tag !");
+                Debug.LogWarning("StorageItem: item has no tag");
                 return;
             }
 
             if (TotalStock + itemQuantity > stockCapacity)
             {
-                Debug.Log($"Shelf: Capacité insuffisante ({TotalStock + itemQuantity} > {stockCapacity})");
+                Debug.Log($"StorageItem: insufficient capacity ({TotalStock + itemQuantity} > {stockCapacity})");
                 return;
             }
 
@@ -45,7 +52,20 @@ public class StorageItem : MonoBehaviour
             }
 
             Destroy(carriedItem.gameObject);
-            Debug.Log($"Shelf: {itemQuantity} {itemTag} ajoutés. Stock actuel : {stockByType[itemTag]} ({TotalStock}/{stockCapacity})");
+            Debug.Log($"StorageItem: {itemQuantity} {itemTag} added, item stock: {stockByType[itemTag]}/{stockCapacity}, total stock: {TotalStock}");
+            if (!isAnimating && fridgeAnimator != null)
+            {
+                StartCoroutine(PlayFridgeAnimation());
+            }
+            else
+            {
+                Debug.Log("Fridge Animation Condition not verified");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("StorageItem: item has unauthorized tag");
+            return;
         }
     }
     private int GetTotalStock()
@@ -75,5 +95,21 @@ public class StorageItem : MonoBehaviour
                 }
             }
         }
+        if (!isAnimating && fridgeAnimator != null)
+        {
+            StartCoroutine(PlayFridgeAnimation());
+        }
+        else
+        {
+            Debug.Log("Fridge Animation Condition not verified");
+        }
     }
+    IEnumerator PlayFridgeAnimation()
+    {
+        isAnimating = true;
+        fridgeAnimator.Play("fridgeAnimation", 0, 0f);
+        yield return new WaitForSeconds(2f);
+        isAnimating = false;
+    }
+
 }

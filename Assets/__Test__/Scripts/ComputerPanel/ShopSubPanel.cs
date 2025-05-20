@@ -36,6 +36,7 @@ public class ShopSubPanel : MonoBehaviour
                 if (MoneyManager.Instance.HasEnoughMoney(price))
                 {
                     MoneyManager.Instance.IncreaseMoney(-price);
+                    DayManager.Instance.AddDrinksPurchased(price);
                     SpawnItem(itemPrefab);
                 }
                 else

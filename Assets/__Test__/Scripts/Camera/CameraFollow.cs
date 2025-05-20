@@ -7,30 +7,36 @@ public class CameraFollow : MonoBehaviour
     public Vector2 maxXZ;
     public float followSpeed = 10f;
     public float height = 117f;
+    public float ratioFOV = 0.35f;
 
-    private Vector3 offset;
+    private Camera mainCam;
 
     private void Start()
     {
-        // Calculate the offset based on initial positions
-        offset = transform.position - target.position;
+        mainCam = Camera.main;
     }
 
     private void LateUpdate()
     {
         if (target == null) return;
 
-        // Desired position based on offset
+        float vFOV = mainCam.fieldOfView;
+        float aspect = mainCam.aspect;
+
+        float halfHeight = Mathf.Tan(vFOV * ratioFOV * Mathf.Deg2Rad) * height;
+        float halfWidth = halfHeight * aspect;
+
+        float pitch = transform.eulerAngles.x;
+        float radians = pitch * Mathf.Deg2Rad;
+
+        float distanceZ = height / Mathf.Tan(radians);
+        Vector3 offset = new Vector3(0, height, -distanceZ);
+
         Vector3 desiredPosition = target.position + offset;
 
-        // Clamp X and Z
-        desiredPosition.x = Mathf.Clamp(desiredPosition.x, minXZ.x, maxXZ.x);
-        desiredPosition.z = Mathf.Clamp(desiredPosition.z, minXZ.y, maxXZ.y);
+        desiredPosition.x = Mathf.Clamp(desiredPosition.x, minXZ.x + halfWidth, maxXZ.x - halfWidth);
+        desiredPosition.z = Mathf.Clamp(desiredPosition.z, minXZ.y + halfHeight, maxXZ.y - halfHeight);
 
-        // Keep Y fixed
-        desiredPosition.y = height;
-
-        // Smooth movement
         transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
     }
 }

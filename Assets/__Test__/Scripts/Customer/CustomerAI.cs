@@ -3,6 +3,7 @@ using System.Collections;
 public class CustomerAI2 : MonoBehaviour
 {
     private ZoneManager barZone, bathroomZone;
+    public Animator animator;
 
     public int stamina = 100;
     public int money = 100;
@@ -11,7 +12,10 @@ public class CustomerAI2 : MonoBehaviour
     private bool isBusy = false;
 
     private CustomerMovementTest2 movement;
-    private Transform /*dancefloorPosition,*/ barPosition, bathroomPosition/*, wanderingPosition*/;
+    private Transform  barPosition, bathroomPosition;
+    public GameObject glassPrefab;
+    public Transform glassSocket;
+    private Transform leavingSpot;
 
     private BoxCollider danceZone;
     private BoxCollider wanderingZone;
@@ -35,10 +39,9 @@ public class CustomerAI2 : MonoBehaviour
     {
         movement = GetComponent<CustomerMovementTest2>();
         createCustomer();
-        //dancefloorPosition = GetTaggedPosition("Dancefloor");
         barPosition = GetTaggedPosition("Bar");
         bathroomPosition = GetTaggedPosition("Bathroom");
-        //wanderingPosition = GetTaggedPosition("Wandering");
+        leavingSpot = GetTaggedPosition("leavingspot");
 
         danceZone = GetTaggedPosition("Dancefloor").GetComponentInChildren<BoxCollider>();
         wanderingZone = GetTaggedPosition("Wandering").GetComponentInChildren<BoxCollider>();
@@ -79,10 +82,10 @@ public class CustomerAI2 : MonoBehaviour
 
     void Update()
     {
-        if (stamina <= 0f)
+        if (stamina <= 0)
         {
-            Debug.Log("Customer satisfaction = " + satisfaction);
-            Destroy(gameObject);
+            CustomerAction action = ChooseAction();
+            StartCoroutine(LeaveClub());
             return;
         }
 
@@ -91,6 +94,22 @@ public class CustomerAI2 : MonoBehaviour
             isBusy = true;
             StartCoroutine(ActionManager());
         }
+
+        if (TimeManager.Instance.gameTime > (TimeManager.Instance.closingTime - 1800) &&
+            TimeManager.Instance.gameTime < (TimeManager.Instance.showingTime))
+        {
+            StopAllCoroutines();
+            StartCoroutine(LeaveClub());
+        }
+    }
+
+    private IEnumerator LeaveClub()
+    {
+        animator.SetBool("IsWalking", true);
+        yield return StartCoroutine(movement.MoveToExact(leavingSpot.position));
+        animator.SetBool("IsWalking", false);
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
     }
 
     private CustomerAction ChooseAction()
@@ -131,17 +150,25 @@ public class CustomerAI2 : MonoBehaviour
 
     private IEnumerator PerformAction(CustomerAction action)
     {
-        Debug.Log("Action en cours : "+ action);
         switch (action)
         {
             case CustomerAction.Bathroom:
                 Transform bathroomSpot;
                 if (bathroomZone != null && bathroomZone.TryEnter(out bathroomSpot))
                 {
+                    animator.SetBool("IsWalking", true);
                     yield return StartCoroutine(movement.MoveToExact(bathroomSpot.position));
-                    stamina += STAMINA_DECREASE_BATHROOM;
-                    yield return new WaitForSeconds(Random.Range(5f, 10f));
+                    animator.SetBool("IsWalking", false);
+
+                    yield return StartCoroutine(RotateTowardsDirection(new Vector3(1f, 0f, -1f)));
+                    Animator toiletAnimator = bathroomSpot.parent.GetComponentInChildren<Animator>();
+
+                    toiletAnimator.SetTrigger("Toilet");
+                    animator.SetTrigger("Toilet");
+
+                    yield return new WaitForSeconds(5f);
                     bathroomZone.Exit(bathroomSpot);
+                    stamina -= STAMINA_DECREASE_BATHROOM;
                     satisfaction += 2;
                 }
                 else if (bathroomZone != null && bathroomZone.CanQueue())
@@ -153,10 +180,14 @@ public class CustomerAI2 : MonoBehaviour
                 {
                     satisfaction -= 1;
                     int random = Random.Range(1, 3);
-                    if(random == 1)
+                    if (random == 1)
+                    {
                         yield return StartCoroutine(PerformAction(CustomerAction.Wandering));
+                    }
                     else
+                    {
                         yield return StartCoroutine(PerformAction(CustomerAction.Dancefloor));
+                    }
                 }
                 break;
 
@@ -164,10 +195,29 @@ public class CustomerAI2 : MonoBehaviour
                 Transform barSpot;
                 if (barZone != null && barZone.TryEnter(out barSpot))
                 {
+                    animator.SetBool("IsWalking", true);
                     yield return StartCoroutine(movement.MoveToExact(barSpot.position));
-                    stamina += STAMINA_DECREASE_BAR;
+                    animator.SetBool("IsWalking", false);
+
+                    yield return StartCoroutine(RotateTowardsDirection(new Vector3(1f, 0f, -1f)));
+                    animator.SetTrigger("Drinking");
+                    Transform drinksTransform = transform.Find("Drinks");
+                    if (drinksTransform != null)
+                    {
+                        glassSocket = drinksTransform;
+                    }
+                    if (glassPrefab != null && glassSocket != null)
+                    {
+                        GameObject glass = Instantiate(glassPrefab, glassSocket);
+                        glass.transform.localPosition = Vector3.zero;
+                        glass.transform.localRotation = Quaternion.identity;
+                        Destroy(glass, 4f);
+                    }
+
+                    yield return new WaitForSeconds(4f);
+
+                    stamina -= STAMINA_DECREASE_BAR;
                     money -= MONEY_DECREASE_BAR;
-                    yield return new WaitForSeconds(Random.Range(8f, 15f));
                     barZone.Exit(barSpot);
                     satisfaction += 3;
                 }
@@ -204,16 +254,24 @@ public class CustomerAI2 : MonoBehaviour
         if (targetZone == null)
             yield break;
 
-        stamina += staminaChange;
+        
         money -= moneyChange;
         if (position == CustomerAction.Dancefloor)
         {
+            
             yield return StartCoroutine(movement.MoveToZoneRandom(targetZone));
+            yield return StartCoroutine(RotateTowardsDirection(new Vector3(-1f, 0f, 1f)));
+            animator.SetBool("IsDancing", true);
             yield return new WaitForSeconds(waitTime);
+            animator.SetBool("IsDancing", false);
+            stamina -= staminaChange;
         }
         else
         {
+            stamina += staminaChange;
+            animator.SetBool("IsWalking", true);
             yield return StartCoroutine(movement.WanderInZone(targetZone));
+            animator.SetBool("IsWalking", false);
             yield break;
         }
     }
@@ -245,4 +303,23 @@ public class CustomerAI2 : MonoBehaviour
 
         yield return StartCoroutine(PerformAction(CustomerAction.Wandering)); // trop d'attente
     }
+
+    IEnumerator RotateTowardsDirection(Vector3 direction)
+    {
+        float duration = 0.3f;
+        float elapsed = 0f;
+
+        Quaternion startRot = transform.rotation;
+        Quaternion endRot = Quaternion.LookRotation(direction.normalized);
+
+        while (elapsed < duration)
+        {
+            transform.rotation = Quaternion.Slerp(startRot, endRot, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.rotation = endRot;
+    }
+
 }

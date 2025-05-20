@@ -229,6 +229,90 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1780655483}
     m_Modifications:
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2144809258341004682, guid: 00c1592ddafec444b8c2d2eb4a32e177, type: 3}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2144809258341004682, guid: 3e58a7c97202b9a45a812204005ff367, type: 3}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069428854291870335, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x20 $300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2144809258341004682, guid: b3a181ab15c8c4645a2a978ead907f15, type: 3}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282784193591985865, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Vodka
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563606554740791267, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x10 $176
+      objectReference: {fileID: 0}
     - target: {fileID: 4732386494522655708, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -309,6 +393,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5225260458962622280, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x6 $120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302805918889769217, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 9874c3304db73514cbd9a66d3f578a14, type: 3}
+    - target: {fileID: 6302805918889769217, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8921404425888255492, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_Name
       value: ItemPanel (1)
@@ -326,6 +422,90 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1780655483}
     m_Modifications:
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2144809258341004682, guid: 047f540db01954f4083bb8b302875c19, type: 3}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2144809258341004682, guid: f4deb80115baf254fb47375bc8a71eba, type: 3}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069428854291870335, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x16 $257
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2144809258341004682, guid: 028e63a80bd9f5a4aa4e5ddc2456a46c, type: 3}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282784193591985865, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Tequila
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563606554740791267, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x8 $153.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4732386494522655708, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -406,6 +586,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5225260458962622280, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x4 $88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302805918889769217, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 579a4bab39d268b49896d9bb513d72b6, type: 3}
     - target: {fileID: 8921404425888255492, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_Name
       value: ItemPanel (2)
@@ -467,6 +655,18 @@ PrefabInstance:
     - target: {fileID: 3025007565457072249, guid: 20a87a1b3b9b82e4d8196d7609c2e864, type: 3}
       propertyPath: m_SizeDelta.y
       value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025007565457072249, guid: 20a87a1b3b9b82e4d8196d7609c2e864, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.54999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025007565457072249, guid: 20a87a1b3b9b82e4d8196d7609c2e864, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.54999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025007565457072249, guid: 20a87a1b3b9b82e4d8196d7609c2e864, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.54999995
       objectReference: {fileID: 0}
     - target: {fileID: 3025007565457072249, guid: 20a87a1b3b9b82e4d8196d7609c2e864, type: 3}
       propertyPath: m_LocalPosition.x
@@ -949,6 +1149,90 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1780655483}
     m_Modifications:
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2144809258341004682, guid: f6a150158d19c014f9cf16dc38752bdd, type: 3}
+    - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2144809258341004682, guid: faf209b630fd1cd42add2334672a0497, type: 3}
+    - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069428854291870335, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x16 $216
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1115389997}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopSubPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2144809258341004682, guid: f5cc6a568eb68d844acfd97b1309f47b, type: 3}
+    - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282784193591985865, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Liquor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563606554740791267, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x12 $190.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4732386494522655708, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1029,6 +1313,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5225260458962622280, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_text
+      value: Buy x8 $144
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302805918889769217, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 1da7cae69985e764c9ad89a184509860, type: 3}
     - target: {fileID: 8921404425888255492, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_Name
       value: ItemPanel (3)
@@ -1255,7 +1547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1738,7 +2030,7 @@ PrefabInstance:
     - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 2042171350545561165, guid: ec078bcf8c60bd9448a0f16c199fd8e9, type: 3}
+      objectReference: {fileID: 2144809258341004682, guid: d4d70a1f3b0cdee479778dca156af2e5, type: 3}
     - target: {fileID: 1760918269758608724, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
@@ -1762,14 +2054,14 @@ PrefabInstance:
     - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 7606915724348047107, guid: cdcb15ccefa4feb4f88d6a5a5e184076, type: 3}
+      objectReference: {fileID: 2144809258341004682, guid: 3fa48626f48f3f046994f02776b37df9, type: 3}
     - target: {fileID: 2339392167961179748, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3069428854291870335, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_text
-      value: Buy x48
+      value: Buy x60 $45
       objectReference: {fileID: 0}
     - target: {fileID: 3215730548353637547, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1817,11 +2109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4282784193591985865, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_text
-      value: Beverage
+      value: Beer
       objectReference: {fileID: 0}
     - target: {fileID: 4563606554740791267, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_text
-      value: Buy x24
+      value: Buy x30 $25.5
       objectReference: {fileID: 0}
     - target: {fileID: 4732386494522655708, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_Pivot.x
@@ -1905,8 +2197,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5225260458962622280, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_text
-      value: Buy x12
+      value: Buy x12 $12
       objectReference: {fileID: 0}
+    - target: {fileID: 6302805918889769217, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 9da1e853089667d41bdaa7a7c4d2c783, type: 3}
     - target: {fileID: 8921404425888255492, guid: cd0e45ce132fbf646ad68c7553c7ee79, type: 3}
       propertyPath: m_Name
       value: ItemPanel
