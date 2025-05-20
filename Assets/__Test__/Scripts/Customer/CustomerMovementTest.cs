@@ -68,7 +68,9 @@ public class CustomerMovementTest2 : MonoBehaviour
 
             if (footSmoke != null) footSmoke.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             animator.SetBool("IsWalking", false);
+            animator.SetBool("Wandering", true);
             yield return new WaitForSeconds(Random.Range(wanderingWaitTimeMin, wanderingWaitTimeMax));
+            animator.SetBool("Wandering", false);
         }
     }
 
