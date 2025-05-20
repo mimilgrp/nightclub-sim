@@ -50,7 +50,7 @@ public class CustomerMovementTest2 : MonoBehaviour
         animator.SetBool("IsWalking", false);
     }
 
-    // Wandering : marcher plusieurs fois dans une zone
+    // Wandering (walking multiple times)
     public IEnumerator WanderInZone(BoxCollider zone)
     {
         for (int i = 0; i < wanderingSteps; i++)
