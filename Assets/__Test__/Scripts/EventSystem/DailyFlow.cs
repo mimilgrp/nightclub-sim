@@ -31,6 +31,7 @@ public class DailyFlow : MonoBehaviour
     {
         Debug.Log("DailyFlow: Closing");
         customerSpawner.KillCustomers();
+        DayManager.Instance.EndDay();
     }
 
     public enum Shift

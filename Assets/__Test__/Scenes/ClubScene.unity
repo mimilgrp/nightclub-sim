@@ -5559,6 +5559,7 @@ GameObject:
   - component: {fileID: 498127178}
   - component: {fileID: 498127182}
   - component: {fileID: 498127184}
+  - component: {fileID: 498127185}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -5710,6 +5711,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popularity: 50
+--- !u!114 &498127185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498127174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9baa4a907095245a9a9d4906a60b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &502240308
 PrefabInstance:
   m_ObjectHideFlags: 0
