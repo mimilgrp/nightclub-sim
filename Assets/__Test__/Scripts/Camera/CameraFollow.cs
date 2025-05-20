@@ -10,29 +10,32 @@ public class CameraFollow : MonoBehaviour
     public float ratioFOV = 0.35f;
 
     private Camera mainCam;
-    private Vector3 offset;
 
     private void Start()
     {
         mainCam = Camera.main;
-        offset = transform.position - target.position;
     }
 
     private void LateUpdate()
     {
         if (target == null) return;
 
-        Vector3 desiredPosition = target.position + offset;
-        
         float vFOV = mainCam.fieldOfView;
         float aspect = mainCam.aspect;
 
         float halfHeight = Mathf.Tan(vFOV * ratioFOV * Mathf.Deg2Rad) * height;
         float halfWidth = halfHeight * aspect;
 
+        float pitch = transform.eulerAngles.x;
+        float radians = pitch * Mathf.Deg2Rad;
+
+        float distanceZ = height / Mathf.Tan(radians);
+        Vector3 offset = new Vector3(0, height, -distanceZ);
+
+        Vector3 desiredPosition = target.position + offset;
+
         desiredPosition.x = Mathf.Clamp(desiredPosition.x, minXZ.x + halfWidth, maxXZ.x - halfWidth);
         desiredPosition.z = Mathf.Clamp(desiredPosition.z, minXZ.y + halfHeight, maxXZ.y - halfHeight);
-        desiredPosition.y = height;
 
         transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
     }
