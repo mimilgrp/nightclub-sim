@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cee0f1215a2462f4abc7923ad60398d2
+guid: b5bfd3ff96987ba44b5e92f761fc09a7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,7 +31,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ToiletUse
+      name: Toilet
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0

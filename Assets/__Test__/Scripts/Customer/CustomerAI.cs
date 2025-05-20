@@ -141,8 +141,16 @@ public class CustomerAI2 : MonoBehaviour
                     animator.SetBool("IsWalking", true);
                     yield return StartCoroutine(movement.MoveToExact(bathroomSpot.position));
                     animator.SetBool("IsWalking", false);
+
+                    yield return StartCoroutine(RotateTowardsDirection(new Vector3(1f, 0f, -1f)));
+                    Animator toiletAnimator = bathroomSpot.parent.GetComponentInChildren<Animator>();
+
+                    toiletAnimator.SetTrigger("Toilet");
+                    animator.SetTrigger("Toilet");
+
+
                     stamina += STAMINA_DECREASE_BATHROOM;
-                    yield return new WaitForSeconds(Random.Range(5f, 10f));
+                    yield return new WaitForSeconds(5f);
                     bathroomZone.Exit(bathroomSpot);
                     satisfaction += 2;
                 }
@@ -174,7 +182,7 @@ public class CustomerAI2 : MonoBehaviour
                     yield return StartCoroutine(movement.MoveToExact(barSpot.position));
                     animator.SetBool("IsWalking", false);
 
-                    yield return StartCoroutine(RotateTowards(barPosition.position));
+                    yield return StartCoroutine(RotateTowardsDirection(new Vector3(1f, 0f, -1f)));
                     animator.SetTrigger("Drinking");
                     Transform drinksTransform = transform.Find("Drinks");
                     if (drinksTransform != null)
@@ -275,14 +283,13 @@ public class CustomerAI2 : MonoBehaviour
         yield return StartCoroutine(PerformAction(CustomerAction.Wandering)); // trop d'attente
     }
 
-    IEnumerator RotateTowards(Vector3 target)
+    IEnumerator RotateTowardsDirection(Vector3 direction)
     {
         float duration = 0.3f;
         float elapsed = 0f;
 
         Quaternion startRot = transform.rotation;
-        Vector3 lookAt = new Vector3(target.x, transform.position.y, target.z);
-        Quaternion endRot = Quaternion.LookRotation(lookAt - transform.position);
+        Quaternion endRot = Quaternion.LookRotation(direction.normalized);
 
         while (elapsed < duration)
         {
