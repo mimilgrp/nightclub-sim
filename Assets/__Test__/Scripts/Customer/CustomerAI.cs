@@ -85,7 +85,7 @@ public class CustomerAI2 : MonoBehaviour
         if (stamina <= 0)
         {
             CustomerAction action = ChooseAction();
-            StartCoroutine(leaveClub());
+            StartCoroutine(LeaveClub());
             return;
         }
 
@@ -94,9 +94,16 @@ public class CustomerAI2 : MonoBehaviour
             isBusy = true;
             StartCoroutine(ActionManager());
         }
+
+        if (TimeManager.Instance.gameTime > (TimeManager.Instance.closingTime - 1800) &&
+            TimeManager.Instance.gameTime < (TimeManager.Instance.showingTime))
+        {
+            StopAllCoroutines();
+            StartCoroutine(LeaveClub());
+        }
     }
 
-    private IEnumerator leaveClub()
+    private IEnumerator LeaveClub()
     {
         animator.SetBool("IsWalking", true);
         yield return StartCoroutine(movement.MoveToExact(leavingSpot.position));
