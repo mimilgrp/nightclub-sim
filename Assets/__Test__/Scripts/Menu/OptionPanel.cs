@@ -11,7 +11,7 @@ public class OptionPanel : MonoBehaviour
 
     [Header("Zoom Settings")]
     public float minFOV = 10f;
-    public float maxFOV = 30f;
+    public float maxFOV = 25f;
 
     private void Start()
     {
