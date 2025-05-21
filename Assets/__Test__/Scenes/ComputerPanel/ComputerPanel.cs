@@ -1,12 +1,24 @@
 using UnityEngine;
 
-public class EmployeeSubPanel : MonoBehaviour
+public class ComputerPanel : MonoBehaviour
 {
+    public GameObject shopSubPanel;
     public GameObject employeeSubPanel;
 
     void Start()
     {
+        shopSubPanel.SetActive(false);
         employeeSubPanel.SetActive(false);
+    }
+
+    public void OpenShopSubPanel()
+    {
+        shopSubPanel.SetActive(true);
+    }
+
+    public void ExitShopSubPanel()
+    {
+        shopSubPanel.SetActive(false);
     }
 
     public void OpenEmployeeSubPanel()

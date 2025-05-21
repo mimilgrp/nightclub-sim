@@ -13530,7 +13530,7 @@ GameObject:
   - component: {fileID: 1494844045}
   m_Layer: 0
   m_Name: ItemSpawner
-  m_TagString: ShopItemsSpawn
+  m_TagString: ItemSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
