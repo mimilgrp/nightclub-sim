@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3325043293989987201}
   - component: {fileID: 6049789706706274942}
   - component: {fileID: 7731965330860940803}
-  - component: {fileID: 5460882607827163633}
+  - component: {fileID: 4374173108919159836}
   m_Layer: 6
   m_Name: Vodka10
   m_TagString: Vodka
@@ -73,7 +73,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5460882607827163633
+--- !u!114 &4374173108919159836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,10 +82,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2144809258341004682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03f08fc1344b4f4dbcd271becde9e77, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c142e2ec0bbb7a45aa9ea79e7de592e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemQuantity: 10
+  quantity: 10
   price: 176
 --- !u!1001 &871326042118923399
 PrefabInstance:
