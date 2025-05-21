@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c142e2ec0bbb7a45aa9ea79e7de592e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beverage: 3
   quantity: 16
   price: 216
 --- !u!1001 &819308161852204409
