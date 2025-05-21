@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6083948178818335}
   - component: {fileID: 6153956404329192580}
   - component: {fileID: 2310017215958242276}
-  - component: {fileID: 5817118881967991686}
   m_Layer: 5
   m_Name: HireButton
   m_TagString: Untagged
@@ -122,19 +121,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5817118881967991686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6522541823961869484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fb9036852dc514b8b4b2cfceaa05e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopItem: {fileID: 0}
 --- !u!1 &6591218591426213749
 GameObject:
   m_ObjectHideFlags: 0
