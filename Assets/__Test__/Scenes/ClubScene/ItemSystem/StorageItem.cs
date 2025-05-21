@@ -22,13 +22,13 @@ public class StorageItem : MonoBehaviour
 
     private int TotalStock => GetTotalStock();
 
-    public void Interact(TakeDropItem carriedItem)
+    public void Interact(BeverageItem carriedItem)
     {
 
         if (carriedItem != null && System.Enum.TryParse<Beverage>(carriedItem.tag, out _))
         {
             string itemTag = carriedItem.tag;
-            int itemQuantity = carriedItem.itemQuantity;
+            int itemQuantity = carriedItem.quantity;
 
             if (string.IsNullOrEmpty(itemTag))
             {

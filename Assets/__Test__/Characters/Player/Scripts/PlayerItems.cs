@@ -56,7 +56,7 @@ public class PlayerItems : MonoBehaviour
                     if (nearestItem is StorageItem storageItem)
                     {
                         // Store item on shelf
-                        storageItem.Interact(carryPoint.GetComponentInChildren<TakeDropItem>());
+                        storageItem.Interact(carryPoint.GetComponentInChildren<BeverageItem>());
                         return;
                     }
 
