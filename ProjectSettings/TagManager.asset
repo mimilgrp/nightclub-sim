@@ -10,7 +10,6 @@ TagManager:
   - Bathroom
   - NPC
   - Computer
-  - ShopItemsSpawn
   - Beer
   - BarInteraction
   - Customer
@@ -19,6 +18,7 @@ TagManager:
   - Tequila
   - Vodka
   - leavingspot
+  - ItemSpawner
   layers:
   - Default
   - TransparentFX
