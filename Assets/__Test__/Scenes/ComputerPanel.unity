@@ -207,9 +207,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1507949403881123613, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: eeaf1b71ac653c647933865ccdec02f7, type: 3}
     - target: {fileID: 4060678300502399000, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
       propertyPath: m_Name
       value: EmployeePanel (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717525085781135573, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
+      propertyPath: m_text
+      value: Teller
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -837,6 +845,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2605192607300091029, guid: 11d51041aba69ed49b38b1eada88a83d, type: 3}
+      propertyPath: m_text
+      value: Hire whoever you want in just 1 click
+      objectReference: {fileID: 0}
     - target: {fileID: 5605208048249470646, guid: 11d51041aba69ed49b38b1eada88a83d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -848,7 +860,7 @@ PrefabInstance:
     - target: {fileID: 5605208048249470646, guid: 11d51041aba69ed49b38b1eada88a83d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1115389997}
     - target: {fileID: 5605208048249470646, guid: 11d51041aba69ed49b38b1eada88a83d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -859,7 +871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5605208048249470646, guid: 11d51041aba69ed49b38b1eada88a83d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EmployeeSubPanel, Assembly-CSharp
+      value: ComputerPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5605208048249470646, guid: 11d51041aba69ed49b38b1eada88a83d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -985,9 +997,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1507949403881123613, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 53b5b0a1c18fb134b93645686da4a118, type: 3}
     - target: {fileID: 4060678300502399000, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
       propertyPath: m_Name
       value: EmployeePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717525085781135573, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
+      propertyPath: m_text
+      value: Bartender
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1087,9 +1107,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1507949403881123613, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 56f602fbd41b99d41bb3417d836cbd6b, type: 3}
     - target: {fileID: 4060678300502399000, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
       propertyPath: m_Name
       value: EmployeePanel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717525085781135573, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
+      propertyPath: m_text
+      value: DJ
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1626,9 +1654,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1507949403881123613, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: d64ce60b693b1e348a245ea145243ce6, type: 3}
     - target: {fileID: 4060678300502399000, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
       propertyPath: m_Name
       value: EmployeePanel (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717525085781135573, guid: 6b12020b518d20c4b8d69d066d80bde0, type: 3}
+      propertyPath: m_text
+      value: Security
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1833,7 +1869,7 @@ PrefabInstance:
     - target: {fileID: 8534584443071405745, guid: 844e1e552f9de0b4ca24deab145954f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1115389997}
     - target: {fileID: 8534584443071405745, guid: 844e1e552f9de0b4ca24deab145954f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1844,7 +1880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8534584443071405745, guid: 844e1e552f9de0b4ca24deab145954f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EmployeeSubPanel, Assembly-CSharp
+      value: ComputerPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8534584443071405745, guid: 844e1e552f9de0b4ca24deab145954f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
