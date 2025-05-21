@@ -15,7 +15,6 @@ public class InteractableItem : MonoBehaviour
         Bar
     }
 
-
     private void Start()
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
@@ -25,7 +24,7 @@ public class InteractableItem : MonoBehaviour
     }
     public void Interact()
     {
-        
+
         Debug.Log("Interact item: " + gameObject.name);
 
         if (CompareTag("Computer"))
@@ -43,8 +42,9 @@ public class InteractableItem : MonoBehaviour
             };
             StartCoroutine(HandleInteraction(0.5f, InteractionItem.Computer));
         }
-        
-        else if (CompareTag("BarInteraction")){
+
+        else if (CompareTag("BarInteraction"))
+        {
             StartCoroutine(HandleInteraction(2f, InteractionItem.Bar));
         }
     }
@@ -67,13 +67,11 @@ public class InteractableItem : MonoBehaviour
 
                 GameObject barObject = GameObject.Find("Bar");
                 BarManager barManager = barObject.GetComponent<BarManager>();
-                if (barManager.PrepareDrink())
-                {
-                    interactionUI.showAction(time);
-                    yield return new WaitForSeconds(time);
-                }
+                interactionUI.showAction(time);
+                yield return new WaitForSeconds(time);
                 playerItems.interactionFreeze = false;
                 playerMovement.movementFreeze = false;
+                barManager.ServeNextCustomer();
                 break;
         }
     }

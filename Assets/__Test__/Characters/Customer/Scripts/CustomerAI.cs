@@ -12,10 +12,12 @@ public class CustomerAI2 : MonoBehaviour
     private bool isBusy = false;
 
     private CustomerMovementTest2 movement;
-    private Transform  barPosition, bathroomPosition;
+    private Transform barPosition, bathroomPosition;
     public GameObject glassPrefab;
     public Transform glassSocket;
     private Transform leavingSpot;
+    private bool drinkReceived = false;
+
 
     private BoxCollider danceZone;
     private BoxCollider wanderingZone;
@@ -200,26 +202,57 @@ public class CustomerAI2 : MonoBehaviour
                     animator.SetBool("IsWalking", false);
 
                     yield return StartCoroutine(RotateTowardsDirection(new Vector3(1f, 0f, -1f)));
-                    animator.SetTrigger("Drinking");
-                    Transform drinksTransform = transform.Find("Drinks");
-                    if (drinksTransform != null)
+
+                    BarManager barManager = barPosition.GetComponentInChildren<BarManager>();
+
+                    if (barManager == null)
                     {
-                        glassSocket = drinksTransform;
-                    }
-                    if (glassPrefab != null && glassSocket != null)
-                    {
-                        GameObject glass = Instantiate(glassPrefab, glassSocket);
-                        glass.transform.localPosition = Vector3.zero;
-                        glass.transform.localRotation = Quaternion.identity;
-                        Destroy(glass, 4f);
+                        Debug.LogError("BarManager introuvable !");
+                        yield break;
                     }
 
-                    yield return new WaitForSeconds(4f);
+                    drinkReceived = false;
+                    barManager.RegisterCustomer(this);
 
-                    stamina -= STAMINA_DECREASE_BAR;
-                    money -= MONEY_DECREASE_BAR;
+                    float waitTime = 0f;
+                    float maxWaitTime = 20f;
+
+                    while (!drinkReceived && waitTime < maxWaitTime)
+                    {
+                        waitTime += Time.deltaTime;
+                        yield return null;
+                    }
+
+                    if (drinkReceived)
+                    {
+                        //Recup Position of the glass
+                        Transform drinksTransform = transform.Find("Drinks");
+                        if (drinksTransform != null)
+                            glassSocket = drinksTransform;
+
+                        //Instanciate the Glass in the hand + animation
+                        if (glassPrefab != null && glassSocket != null)
+                        {
+                            GameObject glass = Instantiate(glassPrefab, glassSocket);
+                            glass.transform.localPosition = Vector3.zero;
+                            glass.transform.localRotation = Quaternion.identity;
+                            animator.SetTrigger("Drinking");
+                            Destroy(glass, 4f);
+                        }
+
+                        yield return new WaitForSeconds(4f);
+                        stamina -= STAMINA_DECREASE_BAR;
+                        money -= MONEY_DECREASE_BAR;
+                        satisfaction += 3;
+                    }
+                    else
+                    {
+                        Debug.Log("Client has been waiting for too long");
+                        satisfaction -= 3;
+                        barManager.UnregisterCustomer(this);
+                    }
                     barZone.Exit(barSpot);
-                    satisfaction += 3;
+
                 }
                 else if (barZone.CanQueue())
                 {
@@ -236,6 +269,7 @@ public class CustomerAI2 : MonoBehaviour
                         yield return StartCoroutine(PerformAction(CustomerAction.Dancefloor));
                 }
                 break;
+
 
             case CustomerAction.Dancefloor:
                 satisfaction += 1;
@@ -254,11 +288,11 @@ public class CustomerAI2 : MonoBehaviour
         if (targetZone == null)
             yield break;
 
-        
+
         money -= moneyChange;
         if (position == CustomerAction.Dancefloor)
         {
-            
+
             yield return StartCoroutine(movement.MoveToZoneRandom(targetZone));
             yield return StartCoroutine(RotateTowardsDirection(new Vector3(-1f, 0f, 1f)));
             animator.SetBool("IsDancing", true);
@@ -321,5 +355,8 @@ public class CustomerAI2 : MonoBehaviour
 
         transform.rotation = endRot;
     }
-
+    public void OnDrinkServed()
+    {
+        drinkReceived = true;
+    }
 }
