@@ -1,46 +1,39 @@
-using System.Collections;
 using UnityEngine;
 
 public class ExperienceManager : MonoBehaviour
 {
-    private int level = 0;
-    private float experience = 0;
+    public float experience = 0;
+    public float experienceStep = 100f;
+    public float increaseStep = 20f;
+    public int level = 0;
 
-    void Start()
+    private void Start()
     {
-        StartCoroutine(GainXPOverTime());
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
-    public void AddExperience(int p)
-    {
-        experience += p;
 
-        if (experience > 100)
+    public static ExperienceManager Instance { get; private set; }
+
+    public void AddExperience(float value)
+    {
+        experience += value;
+        DayManager.Instance.experience += value;
+
+        if (experience >= experienceStep)
         {
             LevelUp();
-        }
-        if (HUDDisplay.Instance != null)
-        {
-            HUDDisplay.Instance.SetExperience((int)experience);
         }
     }
 
     public void LevelUp()
     {
-        experience = 0;
+        experience -= experienceStep;
         level += 1;
-
-        if (HUDDisplay.Instance != null)
-        {
-            HUDDisplay.Instance.SetLevel(level);
-        }
-    }
-
-    private IEnumerator GainXPOverTime()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(2f);
-            AddExperience(10);
-        }
+        experienceStep += increaseStep;
+        increaseStep += 20;
+        DayManager.Instance.level = level;
     }
 }

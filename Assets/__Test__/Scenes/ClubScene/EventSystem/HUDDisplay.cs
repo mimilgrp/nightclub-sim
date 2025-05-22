@@ -18,45 +18,22 @@ public class HUDDisplay : MonoBehaviour
     [Header("Time")]
     public TextMeshProUGUI timeText;
 
-    void Start()
+    void Update()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        experienceBar.fillAmount = 0;
-    }
-
-    public static HUDDisplay Instance { get; private set; }
-
-    public void SetMoney(float money)
-    {
-        moneyText.text = string.Format("${0:F2}", money);
-    }
-
-    public void SetPopularity(float popularity)
-    {
-        popularityBar.fillAmount = popularity / 100;
-        popularityText.text = string.Format("{0:F0}%", popularity);
-    }
-
-    public void SetExperience(float experience)
-    {
-        experienceBar.fillAmount = experience / 100;
-    }
-
-    public void SetLevel(int level)
-    {
-        levelText.text = level.ToString();
-    }
-
-    public void SetTime(int time)
-    {
+        float money = MoneyManager.Instance.money;
+        float popularity = PopularityManager.Instance.popularity;
+        float experience = ExperienceManager.Instance.experience;
+        float experienceStep = ExperienceManager.Instance.experienceStep;
+        int level = ExperienceManager.Instance.level;
+        float time = TimeManager.Instance.gameTime;
         int hours = Mathf.FloorToInt(time / 3600f);
         int minutes = Mathf.FloorToInt((time % 3600f) / 60f);
 
-        string timeFormatted = string.Format("{0:D2}:{1:D2}", hours, minutes);
-
-        timeText.text = timeFormatted;
+        moneyText.text = $"${money:0.00}";
+        popularityBar.fillAmount = popularity / 100;
+        popularityText.text = $"{popularity}%";
+        experienceBar.fillAmount = experience / experienceStep;
+        levelText.text = $"{level}";
+        timeText.text = $"{hours:00}:{minutes:00}";
     }
 }
