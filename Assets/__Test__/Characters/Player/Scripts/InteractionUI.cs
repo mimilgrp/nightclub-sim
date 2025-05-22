@@ -1,64 +1,84 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InteractionUI : MonoBehaviour
 {
+    public GameObject description;
+    public GameObject interaction;
+    public GameObject loading;
 
-    public GameObject interactionUI_interaction;
-    public GameObject interactionUI_action;
-    private Image actionImage;
-    private Coroutine doing;
+    private TextMeshProUGUI descriptionText;
+    private Image loadingImage;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Coroutine loadingCoroutine;
+
     void Start()
     {
-        actionImage = interactionUI_action.GetComponent<Image>();
-        actionImage.fillAmount = 0;
+        descriptionText = description.GetComponent<TextMeshProUGUI>();
+        descriptionText.text = null;
+
+        loadingImage = loading.GetComponent<Image>();
+        loadingImage.fillAmount = 0;
     }
 
-    public void showInteraction()
+    private void ShowDescription(string text)
     {
-        interactionUI_interaction.SetActive(true);
+        description.SetActive(true);
+        descriptionText.text = text.ToUpper();
     }
 
-    public void hideInteraction()
+    private void HideDescription()
     {
-        interactionUI_interaction.SetActive(false);
+        description.SetActive(false);
+        descriptionText.text = null;
     }
 
-    public void showAction(float time)
+    public void ShowInteraction(string description)
     {
-        hideInteraction();
-        interactionUI_action.SetActive(true);
+        interaction.SetActive(true);
+        ShowDescription(description);
+    }
 
-        if (doing != null)
+    public void HideInteraction()
+    {
+        interaction.SetActive(false);
+        HideDescription();
+    }
+
+    public void ShowLoading(float time)
+    {
+        interaction.SetActive(false);
+        loading.SetActive(true);
+
+        if (loadingCoroutine != null)
         {
-            StopCoroutine(doing);
+            StopCoroutine(loadingCoroutine);
         }
 
-        doing = StartCoroutine(Doing(time));
+        loadingCoroutine = StartCoroutine(Loading(time));
     }
 
-    public void hideAction()
+    private void HideLoading()
     {
-        interactionUI_interaction.SetActive(false);
-        actionImage.fillAmount = 0;
+        loading.SetActive(false);
+        loadingImage.fillAmount = 0;
     }
 
-    IEnumerator Doing(float time)
+    IEnumerator Loading(float time)
     {
         float elapsedTime = 0;
-        actionImage.fillAmount = 0;
+        loadingImage.fillAmount = 0;
+
         while (elapsedTime < time)
         {
             yield return null;
             elapsedTime += Time.deltaTime;
-            actionImage.fillAmount = elapsedTime / time;
+            loadingImage.fillAmount = elapsedTime / time;
         }
-        hideAction();
-        showInteraction();
+
+        HideLoading();
+        //ShowInteraction();
     }
-
-
 }

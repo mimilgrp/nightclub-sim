@@ -15,7 +15,6 @@ public class InteractableItem : MonoBehaviour
         Bar
     }
 
-
     private void Start()
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
@@ -23,15 +22,14 @@ public class InteractableItem : MonoBehaviour
         playerMovement = Player.GetComponent<PlayerMovement>();
         interactionUI = Player.GetComponentInChildren<InteractionUI>();
     }
+
     public void Interact()
     {
-        
-        Debug.Log("Interact item: " + gameObject.name);
-
         if (CompareTag("Computer"))
         {
             playerItems.interactionFreeze = true;
             playerMovement.movementFreeze = true;
+            playerMovement.ResetAnimation();
             SceneManager.sceneLoaded += (scene, mode) =>
             {
                 if (scene.name == "ComputerPanel")
@@ -43,8 +41,7 @@ public class InteractableItem : MonoBehaviour
             };
             StartCoroutine(HandleInteraction(0.5f, InteractionItem.Computer));
         }
-        
-        else if (CompareTag("BarInteraction")){
+        else if (CompareTag("Bar")){
             StartCoroutine(HandleInteraction(2f, InteractionItem.Bar));
         }
     }
@@ -57,7 +54,7 @@ public class InteractableItem : MonoBehaviour
         {
             case InteractionItem.Computer:
 
-                interactionUI.showAction(time);
+                interactionUI.ShowLoading(time);
                 yield return new WaitForSeconds(time);
 
                 SceneManager.LoadScene("ComputerPanel", LoadSceneMode.Additive);
@@ -69,7 +66,7 @@ public class InteractableItem : MonoBehaviour
                 BarManager barManager = barObject.GetComponent<BarManager>();
                 if (barManager.PrepareDrink())
                 {
-                    interactionUI.showAction(time);
+                    interactionUI.ShowLoading(time);
                     yield return new WaitForSeconds(time);
                 }
                 playerItems.interactionFreeze = false;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4579580249118278603}
   - component: {fileID: 6117317357652282830}
   - component: {fileID: 76774733679464580}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FootSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4845,9 +4845,9 @@ GameObject:
   - component: {fileID: 3586936301422803787}
   - component: {fileID: 7655857321808610344}
   - component: {fileID: 1361992585301526012}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Customer
-  m_TagString: Customer
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4939,7 +4939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537784939513386877}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DrinkSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5021,9 +5021,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8462709953001013040, guid: 678041f9b12361c41b4bbdc4e2ebb146, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -7703119013003803598, guid: 678041f9b12361c41b4bbdc4e2ebb146, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -7348555901452710524, guid: 678041f9b12361c41b4bbdc4e2ebb146, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 678041f9b12361c41b4bbdc4e2ebb146, type: 3}
       propertyPath: m_Name
       value: Customer
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 678041f9b12361c41b4bbdc4e2ebb146, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3257792644167915994, guid: 678041f9b12361c41b4bbdc4e2ebb146, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465810297349456156, guid: 678041f9b12361c41b4bbdc4e2ebb146, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835574851169600867, guid: 678041f9b12361c41b4bbdc4e2ebb146, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

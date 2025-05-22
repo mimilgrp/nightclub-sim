@@ -9,63 +9,60 @@ public class PlayerItems : MonoBehaviour
 
     public bool interactionFreeze = false;
     private bool isCarrying;
-    private MonoBehaviour nearestItem;
 
-
-    void Update()
+    private void Update()
     {
         if (!interactionFreeze)
         {
             isCarrying = IsCarryingItem();
-            MonoBehaviour newNearestItem = GetNearestItem();
 
-            if (newNearestItem != nearestItem)
-            {
-                nearestItem = newNearestItem;
-            }
+            MonoBehaviour nearestItem = GetNearestItem();
 
             if (nearestItem == null)
             {
-                interactionUI.hideInteraction();
-
+                interactionUI.HideInteraction();
             }
-            else
+            else if (nearestItem is InteractableItem interactableItem)
             {
-                interactionUI.showInteraction();
+                interactionUI.ShowInteraction($"Interact {interactableItem.name}");
+            }
+            else if (nearestItem is StorageItem storageItem)
+            {
+                interactionUI.ShowInteraction($"FIll {storageItem.name}");
+            }
+            else if (nearestItem is BeverageItem beverageItem)
+            {
+                interactionUI.ShowInteraction($"Take {beverageItem.beverage} x{beverageItem.quantity}");
+            }
+            else if (nearestItem is TakeDropItem takeDropItem)
+            {
+                interactionUI.ShowInteraction($"Take {takeDropItem.name}");
             }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (!isCarrying)
-                {
-                    if (nearestItem is TakeDropItem takeDropItem)
-                    {
-                        // Take item
-                        takeDropItem.Interact(carryPoint);
-                    }
-                    else if (nearestItem is InteractableItem interactableItem)
-                    {
-                        // Interact with an InteractableItem
-                        Debug.Log("Interact with : " + nearestItem.tag);
-                        interactableItem.Interact();
-                    }
-
-                }
-                else if (isCarrying)
+                if (isCarrying)
                 {
                     if (nearestItem is StorageItem storageItem)
                     {
-                        // Store item on shelf
-                        storageItem.Interact(carryPoint.GetComponentInChildren<BeverageItem>());
-                        return;
+                        BeverageItem beverageItem = carryPoint.GetComponentInChildren<BeverageItem>();
+
+                        storageItem.Fill(beverageItem);
                     }
 
-                    // Drop item down if no shelf near
                     TakeDropItem carriedItem = carryPoint.GetComponentInChildren<TakeDropItem>();
 
-                    if (carriedItem != null)
+                    carriedItem.Drop();
+                }
+                else
+                {
+                    if (nearestItem is TakeDropItem takeDropItem)
                     {
-                        carriedItem.Interact(carryPoint);
+                        takeDropItem.Take(carryPoint);
+                    }
+                    else if (nearestItem is InteractableItem interactableItem)
+                    {
+                        interactableItem.Interact();
                     }
                 }
             }
@@ -75,80 +72,61 @@ public class PlayerItems : MonoBehaviour
     private MonoBehaviour GetNearestItem()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, interactionLayer);
-
-        MonoBehaviour newNearestItem = null;
+        MonoBehaviour nearestItem = null;
 
         float minDist = float.MaxValue;
 
         foreach (Collider c in hits)
         {
-            if (!isCarrying)
+            if (isCarrying)
             {
-                if (c.TryGetComponent<TakeDropItem>(out var takeDropItem))
+                if (c.TryGetComponent(out StorageItem storageItem))
                 {
-                    if (takeDropItem.transform.IsChildOf(carryPoint))
+                    float dist = Vector3.Distance(transform.position, storageItem.transform.position);
+
+                    if (dist < minDist)
                     {
-                        continue;
-                    }
-                    else
-                    {
-                        float dist = Vector3.Distance(transform.position, takeDropItem.transform.position);
-                        if (dist < minDist)
-                        {
-                            minDist = dist;
-                            newNearestItem = takeDropItem;
-                        }
-                    }
-                }
-                else if (c.TryGetComponent<InteractableItem>(out var interactableItem))
-                {
-                    float dist = Vector3.Distance(transform.position, interactableItem.transform.position);
-                    if (interactableItem.tag != "BarInteraction")
-                    {
-                        if (dist < minDist)
-                        {
-                            minDist = dist;
-                            newNearestItem = interactableItem;
-                        }
-                    }
-                    else
-                    {
-                        if (dist < 2f)
-                        {
-                            minDist = dist;
-                            newNearestItem = interactableItem;
-                            interactionUI.showInteraction();
-                        }
-                        else
-                        {
-                            interactionUI.hideInteraction();
-                        }
+                        minDist = dist;
+                        nearestItem = storageItem;
                     }
                 }
             }
             else
             {
-                if (c.TryGetComponent<StorageItem>(out var storageItem))
+                if (c.TryGetComponent(out TakeDropItem takeDropItem))
                 {
-                    float dist = Vector3.Distance(transform.position, storageItem.transform.position);
+                    if (!takeDropItem.transform.IsChildOf(carryPoint))
+                    {
+                        float dist = Vector3.Distance(transform.position, takeDropItem.transform.position);
+
+                        if (dist < minDist)
+                        {
+                            minDist = dist;
+                            nearestItem = takeDropItem;
+                        }
+                    }
+                }
+                else if (c.TryGetComponent(out InteractableItem interactableItem))
+                {
+                    float dist = Vector3.Distance(transform.position, interactableItem.transform.position);
+
                     if (dist < minDist)
                     {
                         minDist = dist;
-                        newNearestItem = storageItem;
+                        nearestItem = interactableItem;
                     }
                 }
             }
         }
 
-        return newNearestItem;
+        return nearestItem;
     }
 
     private bool IsCarryingItem()
     {
-        return (carryPoint != null && carryPoint.childCount > 0);
+        return (carryPoint.childCount > 0);
     }
 
-    // For debug
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

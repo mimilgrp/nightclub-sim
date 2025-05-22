@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 1543892271116070981}
   m_Layer: 6
   m_Name: Mop
-  m_TagString: Untagged
+  m_TagString: Mop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,8 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a03f08fc1344b4f4dbcd271becde9e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemQuantity: 0
-  price: 0
 --- !u!114 &1543892271116070981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,8 +194,9 @@ MonoBehaviour:
   detectionRadius: 1
   interactionLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   targetTag: Stain
+  stainExperience: 10
 --- !u!1 &1081494014363033872
 GameObject:
   m_ObjectHideFlags: 0
