@@ -4,7 +4,7 @@ public class TakeDropItem : MonoBehaviour
 {
     private bool isCarried = false;
 
-    public virtual void Interact(Transform carryPoint)
+    public void Take(Transform carryPoint)
     {
         if (!isCarried)
         {
@@ -12,11 +12,14 @@ public class TakeDropItem : MonoBehaviour
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             isCarried = true;
         }
-        else
+    }
+
+    public void Drop()
+    {
+        if (isCarried)
         {
             transform.SetParent(null);
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-
             isCarried = false;
         }
     }
