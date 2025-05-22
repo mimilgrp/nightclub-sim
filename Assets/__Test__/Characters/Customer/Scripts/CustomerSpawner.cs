@@ -40,7 +40,7 @@ public class CustomerSpawner : MonoBehaviour
 
             // Spawn the customer
             Instantiate(CustomerPrefab, transform.position, transform.rotation);
-            DayManager.Instance.AddCustomerVisit();
+            DayManager.Instance.customers++;
             customerNumber++;
         }
 

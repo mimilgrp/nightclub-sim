@@ -9583,7 +9583,7 @@ GameObject:
   - component: {fileID: 937607956}
   m_Layer: 0
   m_Name: CustomerSpawner
-  m_TagString: Untagged
+  m_TagString: CustomerSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

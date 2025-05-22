@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-public class CustomerAI2 : MonoBehaviour
+public class CustomerAI : MonoBehaviour
 {
     private ZoneManager barZone, bathroomZone;
     public Animator animator;
@@ -15,7 +15,7 @@ public class CustomerAI2 : MonoBehaviour
     private Transform  barPosition, bathroomPosition;
     public GameObject glassPrefab;
     public Transform glassSocket;
-    private Transform leavingSpot;
+    private Transform customerExit;
 
     private BoxCollider danceZone;
     private BoxCollider wanderingZone;
@@ -41,7 +41,7 @@ public class CustomerAI2 : MonoBehaviour
         createCustomer();
         barPosition = GetTaggedPosition("Bar");
         bathroomPosition = GetTaggedPosition("Bathroom");
-        leavingSpot = GetTaggedPosition("leavingspot");
+        customerExit = GetTaggedPosition("CustomerExit");
 
         danceZone = GetTaggedPosition("Dancefloor").GetComponentInChildren<BoxCollider>();
         wanderingZone = GetTaggedPosition("Wandering").GetComponentInChildren<BoxCollider>();
@@ -73,7 +73,9 @@ public class CustomerAI2 : MonoBehaviour
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(tag);
 
         if (objectsWithTag.Length == 0)
+        {
             return null;
+        }
 
         int randomIndex = Random.Range(0, objectsWithTag.Length);
 
@@ -95,8 +97,8 @@ public class CustomerAI2 : MonoBehaviour
             StartCoroutine(ActionManager());
         }
 
-        if (TimeManager.Instance.gameTime > (TimeManager.Instance.closingTime - 1800) &&
-            TimeManager.Instance.gameTime < (TimeManager.Instance.showingTime))
+        if (TimeManager.Instance.gameTime > (DailyFlow.Instance.closingTime - 1800) &&
+            TimeManager.Instance.gameTime < (DailyFlow.Instance.showingTime))
         {
             StopAllCoroutines();
             StartCoroutine(LeaveClub());
@@ -106,7 +108,7 @@ public class CustomerAI2 : MonoBehaviour
     private IEnumerator LeaveClub()
     {
         animator.SetBool("IsWalking", true);
-        yield return StartCoroutine(movement.MoveToExact(leavingSpot.position));
+        yield return StartCoroutine(movement.MoveToExact(customerExit.position));
         animator.SetBool("IsWalking", false);
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
@@ -124,13 +126,21 @@ public class CustomerAI2 : MonoBehaviour
             float accumulatedChance = 0f;
 
             if (randomValue <= (accumulatedChance += bathroomChance))
+            {
                 chosen = CustomerAction.Bathroom;
+            }
             else if (randomValue <= (accumulatedChance += barChance))
+            {
                 chosen = CustomerAction.Bar;
+            }
             else if (randomValue <= (accumulatedChance += danceChance))
+            {
                 chosen = CustomerAction.Dancefloor;
+            }
             else
+            {
                 chosen = CustomerAction.Wandering;
+            }
 
             attempts++;
             // max 10 tentatives, pour éviter une boucle infinie si toutes les actions sont égales
@@ -231,9 +241,13 @@ public class CustomerAI2 : MonoBehaviour
                     satisfaction -= 1;
                     int random = Random.Range(1, 3);
                     if (random == 1)
+                    {
                         yield return StartCoroutine(PerformAction(CustomerAction.Wandering));
+                    }
                     else
+                    {
                         yield return StartCoroutine(PerformAction(CustomerAction.Dancefloor));
+                    }
                 }
                 break;
 
@@ -252,9 +266,10 @@ public class CustomerAI2 : MonoBehaviour
     private IEnumerator MoveToAndHandleStamina(CustomerAction position, BoxCollider targetZone, int staminaChange, float waitTime, int moneyChange = 0)
     {
         if (targetZone == null)
+        {
             yield break;
+        }
 
-        
         money -= moneyChange;
         if (position == CustomerAction.Dancefloor)
         {
