@@ -3,8 +3,8 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class TimeManager : MonoBehaviour
 {
-    public float gameTime;
-    public float gameTimeScale;
+    public float gameTime = 81000f;
+    public float gameTimeScale = 180f;
 
     private const int SecondsInDay = 86400;
 

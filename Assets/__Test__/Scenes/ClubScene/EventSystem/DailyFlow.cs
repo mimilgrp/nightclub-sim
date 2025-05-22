@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DailyFlow : MonoBehaviour
 {
-    public Shift GameShift;
+    public Shift GameShift = Shift.Preparation;
 
     [Header("Time Shifts")]
     public int preparationTime = 57600;
