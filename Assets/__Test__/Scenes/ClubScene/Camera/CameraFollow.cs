@@ -18,7 +18,10 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (target == null) return;
+        if (target == null)
+        {
+            return;
+        }
 
         float vFOV = mainCam.fieldOfView;
         float aspect = mainCam.aspect;
