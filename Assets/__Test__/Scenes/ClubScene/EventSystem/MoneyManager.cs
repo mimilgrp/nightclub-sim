@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MoneyManager: MonoBehaviour
 {
-    public float money = 1000;
+    public float money = 1000f;
 
     private void Start()
     {
@@ -12,33 +12,16 @@ public class MoneyManager: MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        DisplayMoney();
-    }
-
     public static MoneyManager Instance { get; private set; }
 
-    public void IncreaseMoney(float amount)
+    public void AddMoney(float value, DayManager.Transaction transaction)
     {
-        money += amount;
-    }
-
-    public void DecreaseMoney(float amount)
-    {
-        money -= amount;
+        money += value;
+        DayManager.Instance.AddMoney(value, transaction);
     }
 
     public bool HasEnoughMoney(float amount)
     {
         return (money >= amount);
-    }
-
-    public void DisplayMoney()
-    {
-        if (HUDDisplay.Instance != null)
-        {
-            HUDDisplay.Instance.SetMoney(money);
-        }
     }
 }

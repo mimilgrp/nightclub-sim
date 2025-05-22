@@ -16,25 +16,14 @@ public class OptionPanel : MonoBehaviour
     private void Start()
     {
         mainCam = Camera.main;
-        if (mainCam == null)
-        {
-            Debug.LogError("OptionPanel: Main camera not found");
-            return;
-        }
 
         greyWhiteView = mainCam.GetComponent<GreyWhiteView>();
 
-        if (zoomSlider != null)
-        {
-            zoomSlider.value = 1f - (mainCam.fieldOfView - minFOV) / (maxFOV - minFOV);
-            zoomSlider.onValueChanged.AddListener(SetZoom);
-        }
+        zoomSlider.value = 1f - (mainCam.fieldOfView - minFOV) / (maxFOV - minFOV);
+        zoomSlider.onValueChanged.AddListener(SetZoom);
 
-        if (viewToggle != null)
-        {
-            viewToggle.isOn = greyWhiteView.enabled;
-            viewToggle.onValueChanged.AddListener(SetGreyWhiteView);
-        }
+        viewToggle.isOn = greyWhiteView.enabled;
+        viewToggle.onValueChanged.AddListener(SetGreyWhiteView);
     }
 
     private void SetZoom(float value)
@@ -43,7 +32,6 @@ public class OptionPanel : MonoBehaviour
         {
             float fov = Mathf.Lerp(maxFOV, minFOV, value);
             mainCam.fieldOfView = fov;
-            Debug.Log("OptionPanel: Zoom " + fov);
         }
     }
 
@@ -52,7 +40,6 @@ public class OptionPanel : MonoBehaviour
         if (greyWhiteView != null)
         {
             greyWhiteView.enabled = enabled;
-            Debug.Log("OptionPanel: GreyWhite view " + enabled);
         }
     }
 }

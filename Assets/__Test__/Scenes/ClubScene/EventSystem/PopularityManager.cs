@@ -1,25 +1,22 @@
 using UnityEngine;
 
-public class Popularity : MonoBehaviour
+public class PopularityManager : MonoBehaviour
 {
     public float popularity = 50f;
 
-    private void Update()
+    private void Start()
     {
-        DisplayPopularity();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
 
-    public void IncreasePopularity(float value)
+    public static PopularityManager Instance { get; private set; }
+
+    public void AddPopularity(float value)
     {
         popularity = Mathf.Clamp(popularity + value, 0f, 100f);
-
-    }
-
-    public void DisplayPopularity()
-    {
-        if (HUDDisplay.Instance != null)
-        {
-            HUDDisplay.Instance.SetPopularity(popularity);
-        }
+        DayManager.Instance.popularity += popularity;
     }
 }

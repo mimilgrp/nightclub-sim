@@ -17,8 +17,9 @@ TagManager:
   - Liquor
   - Tequila
   - Vodka
-  - leavingspot
   - ItemSpawner
+  - CustomerSpawner
+  - CustomerExit
   layers:
   - Default
   - TransparentFX

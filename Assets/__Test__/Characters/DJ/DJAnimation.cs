@@ -21,8 +21,8 @@ public class DJAnimation : MonoBehaviour
         if (TimeManager.Instance != null)
         {
             gameTime = TimeManager.Instance.gameTime;
-            showingTime = TimeManager.Instance.showingTime;
-            closingTime = TimeManager.Instance.closingTime;
+            showingTime = DailyFlow.Instance.showingTime;
+            closingTime = DailyFlow.Instance.closingTime;
         } 
 
         if (gameTime > (showingTime - delayBeforeShowingTime) ||

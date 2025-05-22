@@ -176,9 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Customer visits
-
-'
+  m_text: Customers
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -615,7 +613,7 @@ GameObject:
   - component: {fileID: 531547415}
   - component: {fileID: 531547414}
   m_Layer: 5
-  m_Name: PausePanel
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -803,8 +801,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayText: {fileID: 1056064329}
-  purchasedText: {fileID: 2029148257}
-  soldText: {fileID: 1416534963}
+  drinksPurchasedText: {fileID: 2029148257}
+  drinksSoldText: {fileID: 1416534963}
   moneyText: {fileID: 1664474348}
   customersText: {fileID: 1293452393}
   popularityText: {fileID: 2020924129}
@@ -1000,7 +998,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Experience earned
+  m_text: 'Experience
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1497,7 +1497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1226608333}
   m_Layer: 5
-  m_Name: Sold
+  m_Name: DrinksSold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1916,7 +1916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1522676858}
   m_Layer: 5
-  m_Name: Purchased
+  m_Name: DrinksPurchased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2136,7 +2136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Money earned
+  m_text: 'Money
 
 '
   m_isRightToLeft: 0
@@ -2410,7 +2410,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Popularity earned
+  m_text: 'Popularity
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

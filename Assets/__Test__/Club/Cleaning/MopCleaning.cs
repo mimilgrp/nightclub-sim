@@ -6,14 +6,16 @@ public class MopCleaning : MonoBehaviour
     public LayerMask interactionLayer;
     public string targetTag;
 
+    public float stainExperience = 10f;
+
     private void Update()
     {
         GameObject nearestItem = GetNearestItem();
         
         if (nearestItem != null)
         {
-            Debug.Log("Mop: Stain cleaned");
             Destroy(nearestItem);
+            ExperienceManager.Instance.AddExperience(stainExperience);
         }
     }
 

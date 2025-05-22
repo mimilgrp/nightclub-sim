@@ -569,7 +569,7 @@ MonoBehaviour:
   zoomSlider: {fileID: 1137056576}
   viewToggle: {fileID: 242831158}
   minFOV: 10
-  maxFOV: 30
+  maxFOV: 25
 --- !u!1 &360228756
 GameObject:
   m_ObjectHideFlags: 0

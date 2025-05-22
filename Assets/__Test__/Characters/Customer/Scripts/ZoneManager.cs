@@ -12,7 +12,9 @@ public class ZoneManager : MonoBehaviour
     void Start()
     {
         foreach (var spot in spots)
+        {
             spotStatus[spot] = false;
+        }
     }
 
     public bool HasFreeSpot() => GetFreeSpot() != null;
@@ -22,7 +24,9 @@ public class ZoneManager : MonoBehaviour
         foreach (var kvp in spotStatus)
         {
             if (!kvp.Value)
+            {
                 return kvp.Key;
+            }
         }
         return null;
     }
@@ -41,7 +45,9 @@ public class ZoneManager : MonoBehaviour
     public void Exit(Transform spot)
     {
         if (spotStatus.ContainsKey(spot))
+        {
             spotStatus[spot] = false;
+        }
     }
 
     public bool CanQueue() => waitingQueue.Count < maxQueueSize;

@@ -21,16 +21,26 @@ public class CustomerMovementTest2 : MonoBehaviour
     {
         agent.SetDestination(position);
         animator.SetBool("IsWalking", true);
-        if (footSmoke != null) footSmoke.Play();
-
+        if (footSmoke != null)
+        {
+            footSmoke.Play();
+        }
 
         while (agent.pathPending)
+        {
             yield return null;
+        }
 
         while (agent.remainingDistance > agent.stoppingDistance)
+        {
             yield return null;
+        }
 
-        if (footSmoke != null) footSmoke.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        if (footSmoke != null)
+        {
+            footSmoke.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
+
         animator.SetBool("IsWalking", false);
     }
     public IEnumerator MoveToZoneRandom(BoxCollider zone)
@@ -38,15 +48,26 @@ public class CustomerMovementTest2 : MonoBehaviour
         Vector3 destination = GetRandomPointInBox(zone);
         agent.SetDestination(destination);
         animator.SetBool("IsWalking", true);
-        if (footSmoke != null) footSmoke.Play();
+        if (footSmoke != null)
+        {
+            footSmoke.Play();
+        }
 
         while (agent.pathPending)
+        {
             yield return null;
+        }
 
         while (agent.remainingDistance > agent.stoppingDistance)
+        {
             yield return null;
+        }
 
-        if (footSmoke != null) footSmoke.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        if (footSmoke != null)
+        {
+            footSmoke.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
+
         animator.SetBool("IsWalking", false);
     }
 
@@ -58,15 +79,26 @@ public class CustomerMovementTest2 : MonoBehaviour
             Vector3 destination = GetRandomPointInBox(zone);
             agent.SetDestination(destination);
             animator.SetBool("IsWalking", true);
-            if (footSmoke != null) footSmoke.Play();
+            if (footSmoke != null)
+            {
+                footSmoke.Play();
+            }
 
             while (agent.pathPending)
+            {
                 yield return null;
+            }
 
             while (agent.remainingDistance > agent.stoppingDistance)
+            {
                 yield return null;
+            }
 
-            if (footSmoke != null) footSmoke.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            if (footSmoke != null)
+            {
+                footSmoke.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            }
+
             animator.SetBool("IsWalking", false);
             animator.SetBool("Wandering", true);
             yield return new WaitForSeconds(Random.Range(wanderingWaitTimeMin, wanderingWaitTimeMax));

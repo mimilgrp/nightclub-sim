@@ -7,16 +7,20 @@ public class DayManager : MonoBehaviour
     private PlayerItems playerItems;
     private PlayerMovement playerMovement;
 
-    public static DayManager Instance { get; private set; }
+    public int day;
+    public float drinksPurchased;
+    public float drinksSold;
+    public float money;
+    public int customers;
+    public float popularity;
+    public float experience;
+    public int level;
 
-    public int DayNumber { get; private set; }
-    public float DrinksPurchased { get; private set; }
-    public float DrinksSold { get; private set; }
-    public float MoneyEarned { get; private set; }
-    public int CustomerVisits { get; private set; }
-    public float PopularityEarned { get; private set; }
-    public float ExperienceEarned { get; private set; }
-    public int LevelEarned { get; private set; }
+    public enum Transaction
+    {
+        DrinksPurchased,
+        DrinksSold
+    }
 
     void Start()
     {
@@ -34,31 +38,37 @@ public class DayManager : MonoBehaviour
             Instance = this;
         }
 
-        DayNumber = 0;
+        day = 0;
         ResetDayProperties();
     }
 
-    public void AddDrinksPurchased(float amount)
-    {
-        DrinksPurchased -= amount;
-        MoneyEarned -= amount;
-    }
+    public static DayManager Instance { get; private set; }
 
-    public void AddCustomerVisit()
+    public void AddMoney(float value, Transaction transaction)
     {
-        CustomerVisits++;
+        switch (transaction)
+        {
+            case Transaction.DrinksPurchased:
+                drinksPurchased += value;
+                break;
+            case Transaction.DrinksSold:
+                drinksSold += value;
+                break;
+        }
+
+        money += value;
     }
 
     private void ResetDayProperties()
     {
-        DayNumber++;
-        DrinksPurchased = 0;
-        DrinksSold = 0;
-        MoneyEarned = 0;
-        CustomerVisits = 0;
-        PopularityEarned = 0;
-        ExperienceEarned = 0;
-        LevelEarned = 0;
+        day++;
+        drinksPurchased = 0;
+        drinksSold = 0;
+        money = 0;
+        customers = 0;
+        popularity = 0;
+        experience = 0;
+        level = 0;
     }
 
     public void EndDay()
@@ -89,7 +99,7 @@ public class DayManager : MonoBehaviour
         if (TimeManager.Instance != null)
         {
             ResetDayProperties();
-            TimeManager.Instance.gameTime = TimeManager.Instance.preparationTime;
+            DailyFlow.Instance.Preparation();
         }
     }
 }
