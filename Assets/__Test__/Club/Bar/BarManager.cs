@@ -3,7 +3,7 @@ using UnityEngine;
 public class BarManager : MonoBehaviour
 {
     StorageItem fridge;
-    private List<CustomerAI2> waitingCustomers = new List<CustomerAI2>();
+    private List<CustomerAI> waitingCustomers = new List<CustomerAI>();
     private int maxQueueSize = 3;
 
     void Start()
@@ -42,7 +42,7 @@ public class BarManager : MonoBehaviour
         return true;
     }
 
-    public bool RegisterCustomer(CustomerAI2 customer)
+    public bool RegisterCustomer(CustomerAI customer)
     {
         //Securité
         if (waitingCustomers.Contains(customer))
@@ -58,7 +58,7 @@ public class BarManager : MonoBehaviour
         Debug.Log("Client add to the bar queue");
         return true;
     }
-    public void UnregisterCustomer(CustomerAI2 customer)
+    public void UnregisterCustomer(CustomerAI customer)
     {
         if (waitingCustomers.Remove(customer))
         {

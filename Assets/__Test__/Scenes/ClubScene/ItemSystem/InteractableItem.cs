@@ -66,7 +66,7 @@ public class InteractableItem : MonoBehaviour
 
                 GameObject barObject = GameObject.Find("Bar");
                 BarManager barManager = barObject.GetComponent<BarManager>();
-                interactionUI.showAction(time);
+                interactionUI.ShowLoading(time);
                 yield return new WaitForSeconds(time);
                 playerItems.interactionFreeze = false;
                 playerMovement.movementFreeze = false;
