@@ -41,7 +41,9 @@ public class InteractableItem : MonoBehaviour
             };
             StartCoroutine(HandleInteraction(0.5f, InteractionItem.Computer));
         }
-        else if (CompareTag("Bar")){
+
+        else if (CompareTag("BarInteraction"))
+        {
             StartCoroutine(HandleInteraction(2f, InteractionItem.Bar));
         }
     }
@@ -64,13 +66,11 @@ public class InteractableItem : MonoBehaviour
 
                 GameObject barObject = GameObject.Find("Bar");
                 BarManager barManager = barObject.GetComponent<BarManager>();
-                if (barManager.PrepareDrink())
-                {
-                    interactionUI.ShowLoading(time);
-                    yield return new WaitForSeconds(time);
-                }
+                interactionUI.showAction(time);
+                yield return new WaitForSeconds(time);
                 playerItems.interactionFreeze = false;
                 playerMovement.movementFreeze = false;
+                barManager.ServeNextCustomer();
                 break;
         }
     }

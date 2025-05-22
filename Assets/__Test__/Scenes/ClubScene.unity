@@ -10936,10 +10936,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fridge
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3358120532496108930, guid: c03bc50dfa6fec94798052c3a88c5c73, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1111304369168477863, guid: c03bc50dfa6fec94798052c3a88c5c73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1771834152}
   m_SourcePrefab: {fileID: 100100000, guid: c03bc50dfa6fec94798052c3a88c5c73, type: 3}
 --- !u!1001 &1082253860
 PrefabInstance:
@@ -16841,6 +16845,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6414140073396438471, guid: f1a4d175692f5df4bbef912b6cb66ece, type: 3}
   m_PrefabInstance: {fileID: 1769740408}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1771834150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1111304369168477863, guid: c03bc50dfa6fec94798052c3a88c5c73, type: 3}
+  m_PrefabInstance: {fileID: 1079198357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1771834152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771834150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4449f1fa83337b145be8e109352c9160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fridgeAnimator: {fileID: 1771834153}
+  stockCapacity: 120
+--- !u!95 &1771834153 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5274401178736684804, guid: c03bc50dfa6fec94798052c3a88c5c73, type: 3}
+  m_PrefabInstance: {fileID: 1079198357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1775224226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22610,6 +22638,10 @@ PrefabInstance:
     - target: {fileID: 1525601794526236185, guid: 0da66566d9000a04fb1d462824eba2bf, type: 3}
       propertyPath: m_Name
       value: Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525601794526236185, guid: 0da66566d9000a04fb1d462824eba2bf, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4899011456472861875, guid: 0da66566d9000a04fb1d462824eba2bf, type: 3}
       propertyPath: m_LocalPosition.x
