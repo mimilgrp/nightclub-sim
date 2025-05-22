@@ -3132,7 +3132,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 20
+  field of view: 15
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -3201,7 +3201,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab7b0f1f3a0d3b7419dd48a157831119, type: 3}
   m_Name: 
@@ -4863,14 +4863,14 @@ GameObject:
   - component: {fileID: 498127177}
   - component: {fileID: 498127176}
   - component: {fileID: 498127175}
-  - component: {fileID: 498127181}
-  - component: {fileID: 498127183}
-  - component: {fileID: 498127180}
   - component: {fileID: 498127179}
   - component: {fileID: 498127178}
-  - component: {fileID: 498127182}
-  - component: {fileID: 498127184}
   - component: {fileID: 498127185}
+  - component: {fileID: 498127180}
+  - component: {fileID: 498127181}
+  - component: {fileID: 498127183}
+  - component: {fileID: 498127182}
+  - component: {fileID: 498127186}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4940,7 +4940,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d522f51513b92d4bab75dc251a92067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customerSpawnerGameObject: {fileID: 937607955}
+  GameShift: 0
+  preparationTime: 57600
+  showingTime: 82800
+  closingTime: 14400
+  preparationTimeScale: 180
+  showingTimeScale: 120
 --- !u!114 &498127179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4953,13 +4958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1355575c154843f4db662166179f2d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTime: 77400
-  preparationTimeScale: 180
-  showingTimeScale: 120
-  closingTimeScale: 0
-  preparationTime: 57600
-  showingTime: 82800
-  closingTime: 14400
+  gameTime: 0
+  gameTimeScale: 0
 --- !u!114 &498127180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4972,6 +4972,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b261fddaeb0ecc642919d77450fd27f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  experience: 0
+  experienceStep: 100
+  increaseStep: 20
+  level: 0
 --- !u!114 &498127181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5009,19 +5013,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 1000
---- !u!114 &498127184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498127174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba1bbaeae94869542879f623117b38b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popularity: 50
 --- !u!114 &498127185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5034,6 +5025,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9baa4a907095245a9a9d4906a60b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  day: 0
+  drinksPurchased: 0
+  drinksSold: 0
+  money: 0
+  customers: 0
+  popularity: 0
+  experience: 0
+  level: 0
+--- !u!114 &498127186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498127174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1bbaeae94869542879f623117b38b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popularity: 50
 --- !u!1001 &502240308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12740,7 +12752,7 @@ GameObject:
   - component: {fileID: 1383993879}
   m_Layer: 0
   m_Name: CustomerExit
-  m_TagString: leavingspot
+  m_TagString: CustomerExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
