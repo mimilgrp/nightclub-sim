@@ -4,30 +4,49 @@ using UnityEngine;
 public class EndDayPanel : MonoBehaviour
 {
     public TextMeshProUGUI dayText;
-    public TextMeshProUGUI purchasedText;
-    public TextMeshProUGUI soldText;
+
+    public TextMeshProUGUI drinksPurchasedText;
+    public TextMeshProUGUI drinksSoldText;
     public TextMeshProUGUI moneyText;
+
     public TextMeshProUGUI customersText;
     public TextMeshProUGUI popularityText;
     public TextMeshProUGUI experienceText;
-    public TextMeshProUGUI   levelText;
+
+    public TextMeshProUGUI levelText;
 
     void Start()
     {
-        dayText.text = $"End day {DayManager.Instance.DayNumber}";
+        int day = DayManager.Instance.day;
 
-        purchasedText.text = DayManager.Instance.DrinksPurchased.ToString("+$0.00;-$0.00;$0.00");
-        soldText.text = DayManager.Instance.DrinksSold.ToString("+$0.00;-$0.00;$0.00");
-        moneyText.text = DayManager.Instance.MoneyEarned.ToString("+$0.00;-$0.00;$0.00");
+        dayText.text = $"End day {day}";
 
-        customersText.text = DayManager.Instance.CustomerVisits.ToString();
-        popularityText.text = DayManager.Instance.PopularityEarned.ToString("+0;-0;0");
-        experienceText.text = DayManager.Instance.ExperienceEarned.ToString("+0");
+        float drinksPurchased = DayManager.Instance.drinksPurchased;
+        float drinksSold = DayManager.Instance.drinksSold;
+        float money = DayManager.Instance.money;
 
-        if (DayManager.Instance.LevelEarned > 0)
-            levelText.text = $"Level {DayManager.Instance.LevelEarned} earned";
+        drinksPurchasedText.text = $"{drinksPurchased:+$0.00;-$0.00;-$0.00}";
+        drinksSoldText.text = $"{drinksSold:+$0.00;-$0.00;+$0.00}";
+        moneyText.text = $"{money:+$0.00;-$0.00;+$0.00}";
+
+        int customers = DayManager.Instance.customers;
+        float popularity = DayManager.Instance.popularity;
+        float experience = DayManager.Instance.experience;
+
+        customersText.text = $"{customers}";
+        popularityText.text = $"{popularity:+0;-0;+0}%";
+        experienceText.text = $"{experience:+0;-0;+0}";
+
+        int level = DayManager.Instance.level;
+
+        if (level > 0)
+        {
+            levelText.text = $"Level {level} earned";
+        }
         else
+        {
             levelText.text = "No level earned";
+        }
     }
 
     public void ClosePanel()
