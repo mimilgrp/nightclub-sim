@@ -5,9 +5,9 @@ public class DailyFlow : MonoBehaviour
     public Shift GameShift = Shift.Preparation;
 
     [Header("Time Shifts")]
-    public int preparationTime = 57600;
-    public int showingTime = 82800;
-    public int closingTime = 14400;
+    public float preparationTime = 57600;
+    public float showingTime = 82800;
+    public float closingTime = 14400;
 
     [Header("Time Scales")]
     public float preparationTimeScale = 180f;
