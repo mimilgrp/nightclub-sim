@@ -42,15 +42,7 @@ public class ItemBuyButton : MonoBehaviour
 
             if (!MoneyManager.Instance.HasEnoughMoney(price))
             {
-                Debug.LogWarning("ItemPanelBuyButton: Not enough money");
-            }
-            else if (!shopItem)
-            {
-                Debug.LogWarning("ItemPanelBuyButton: No shop item");
-            }
-            else if (!itemSpawner)
-            {
-                Debug.LogWarning("ItemPanelBuyButton: No item spawner");
+                HUDDisplay.Instance.ShowNotification("You do not have enough money to buy this");
             }
             else
             {
