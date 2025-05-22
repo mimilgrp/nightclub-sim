@@ -3,7 +3,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class TimeManager : MonoBehaviour
 {
-    public float gameTime = 81000f;
+    public float gameTime = 77400f;
     public float gameTimeScale = 180f;
 
     private const int SecondsInDay = 86400;
@@ -14,8 +14,6 @@ public class TimeManager : MonoBehaviour
         {
             Instance = this;
         }
-
-        DailyFlow.Instance.Preparation();
     }
 
     private void Update()
@@ -57,8 +55,10 @@ public class TimeManager : MonoBehaviour
 
     public static TimeManager Instance { get; private set; }
 
-    private bool IsTimeInRange(int start, int end)
+    public static bool IsTimeInRange(float start, float end)
     {
+        float gameTime = Instance.gameTime;
+
         return start < end
             ? gameTime >= start && gameTime < end
             : gameTime >= start || gameTime < end;

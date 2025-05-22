@@ -20,6 +20,8 @@ TagManager:
   - ItemSpawner
   - CustomerSpawner
   - CustomerExit
+  - PreparingLight
+  - ShowingLight
   layers:
   - Default
   - TransparentFX

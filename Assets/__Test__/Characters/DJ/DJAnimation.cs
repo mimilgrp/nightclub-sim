@@ -7,10 +7,6 @@ public class DJAnimation : MonoBehaviour
     public int delayBeforeShowingTime = 3600;
     public int delayAfterClosingTime = 0;
 
-    private float gameTime;
-    private int showingTime;
-    private int closingTime;
-
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -18,12 +14,9 @@ public class DJAnimation : MonoBehaviour
 
     void Update()
     {
-        if (TimeManager.Instance != null)
-        {
-            gameTime = TimeManager.Instance.gameTime;
-            showingTime = DailyFlow.Instance.showingTime;
-            closingTime = DailyFlow.Instance.closingTime;
-        } 
+        float gameTime = TimeManager.Instance.gameTime;
+        float showingTime = DailyFlow.Instance.showingTime;
+        float closingTime = DailyFlow.Instance.closingTime;
 
         if (gameTime > (showingTime - delayBeforeShowingTime) ||
             gameTime < (closingTime + delayAfterClosingTime))
