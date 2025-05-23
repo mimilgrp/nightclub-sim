@@ -5,10 +5,13 @@ public class BarManager : MonoBehaviour
     StorageItem fridge;
     private List<CustomerAI> waitingCustomers = new List<CustomerAI>();
     private int maxQueueSize = 3;
+    private InteractionUI interactionUI;
 
     void Start()
     {
         fridge = GetComponentInChildren<StorageItem>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        interactionUI = player.GetComponentInChildren<InteractionUI>();
     }
 
     public bool canPrepareDrink(Dictionary<string, int> requiredIngredients)
@@ -19,6 +22,7 @@ public class BarManager : MonoBehaviour
             if (availableQty < item.Value)
             {
                 Debug.Log($"Manque de {item.Key} ({availableQty}/{item.Value})");
+                interactionUI.ShowNoBeverageReaction();
                 return false;
             }
         }
@@ -70,7 +74,7 @@ public class BarManager : MonoBehaviour
     {
         if (waitingCustomers.Count == 0)
         {
-            Debug.Log("No client waiting to be served");
+            interactionUI.ShowNoCustomerReaction();
             return;
         }
 

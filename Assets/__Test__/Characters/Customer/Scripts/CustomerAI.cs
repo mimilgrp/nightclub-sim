@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using static CustomerAI;
 public class CustomerAI : MonoBehaviour
 {
     private ZoneManager barZone, bathroomZone;
@@ -12,6 +13,7 @@ public class CustomerAI : MonoBehaviour
     private bool isBusy = false;
 
     private CustomerMovementTest2 movement;
+    private CustomerReaction customerReaction;
     private Transform barPosition, bathroomPosition;
     public GameObject glassPrefab;
     public Transform glassSocket;
@@ -40,6 +42,7 @@ public class CustomerAI : MonoBehaviour
     void Start()
     {
         movement = GetComponent<CustomerMovementTest2>();
+        customerReaction = GetComponent<CustomerReaction>();
         createCustomer();
         barPosition = GetTaggedPosition("Bar");
         bathroomPosition = GetTaggedPosition("Bathroom");
@@ -235,6 +238,9 @@ public class CustomerAI : MonoBehaviour
 
                     if (drinkReceived)
                     {
+
+                        customerReaction.ShowMoney();
+
                         //Recup Position of the glass
                         Transform drinksTransform = transform.Find("Drinks");
                         if (drinksTransform != null)
@@ -259,6 +265,7 @@ public class CustomerAI : MonoBehaviour
                     {
                         Debug.Log("Client has been waiting for too long");
                         satisfaction -= 3;
+                        customerReaction.ShowAngryWaitingReaction();
                         barManager.UnregisterCustomer(this);
                     }
                     barZone.Exit(barSpot);

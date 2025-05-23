@@ -8,6 +8,8 @@ public class InteractionUI : MonoBehaviour
     public GameObject description;
     public GameObject interaction;
     public GameObject loading;
+    public GameObject NoCustomer;
+    public GameObject NoBeverage;
 
     private TextMeshProUGUI descriptionText;
     private Image loadingImage;
@@ -21,6 +23,14 @@ public class InteractionUI : MonoBehaviour
 
         loadingImage = loading.GetComponent<Image>();
         loadingImage.fillAmount = 0;
+    }
+    public void ShowNoCustomerReaction()
+    {
+        StartCoroutine(ShowTemporary(NoCustomer, 2f));
+    }
+    public void ShowNoBeverageReaction()
+    {
+        StartCoroutine(ShowTemporary(NoBeverage, 2f));
     }
 
     private void ShowDescription(string text)
@@ -79,6 +89,13 @@ public class InteractionUI : MonoBehaviour
         }
 
         HideLoading();
-        //ShowInteraction();
+    }
+
+    private IEnumerator ShowTemporary(GameObject obj, float duration)
+    {
+        descriptionText.text = null;
+        obj.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        obj.SetActive(false);
     }
 }
